@@ -5,7 +5,7 @@ const Header = () => {
   const [navbar, setNavbar] = useState(false)
 
   return (
-    <header className=''>
+    <header className='bg-[#d1d1d1]'>
       <nav className='w-full text-white nav-font'>
         <div className='justify-between px-4 mx-auto md:items-center md:flex md:px-8'>
           <div className='mb-0 lg:mb-2'>
@@ -15,7 +15,7 @@ const Header = () => {
               </a>
               <div className='md:hidden'>
                 <button
-                  className='p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border'
+                  className='p-2 text-white rounded-md outline-none focus:border-gray-400 focus:border'
                   onClick={() => setNavbar(!navbar)}
                 >
                   {navbar ? (
@@ -53,11 +53,11 @@ const Header = () => {
           </div>
           <div>
             <div
-              className={`flex-1 justify-self-center h-[125vh] lg:h-auto pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+              className={`flex-1 justify-self-center h-[80vh] lg:h-auto pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
                 navbar ? 'block' : 'hidden'
               }`}
             >
-              <ul className='justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-[25px]'>
+              <ul className='justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-[30px] lg:text-[25px]'>
                 <li>
                   <a href='/'>O nás</a>
                 </li>
