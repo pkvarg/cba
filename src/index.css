@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Yanone+Kaffeesatz:wght@200;300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* background-color: black; */
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.hero {
+  background-image: linear-gradient(to top, #12121100, #87848479, #453f3f74),
+    url('/stream.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+}
