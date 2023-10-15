@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-scroll'
+import LanguageBar from './LanguageBar'
 
-const Header = () => {
+const Header = ({ content }) => {
   const [navbar, setNavbar] = useState(false)
 
   return (
@@ -11,7 +12,7 @@ const Header = () => {
           <div className='mb-0 lg:mb-2'>
             <div className='flex items-center justify-between py-3 md:py-5 md:block'>
               <a className='text-[2.05rem] font-normal' href='/'>
-                Cirkev v Bratislave
+                {content.headerTitle}
               </a>
               <div className='md:hidden'>
                 <button
@@ -98,6 +99,9 @@ const Header = () => {
                 </li>
                 <li>
                   <a href='/audio'>Audio</a>
+                </li>
+                <li>
+                  <LanguageBar />
                 </li>
               </ul>
             </div>

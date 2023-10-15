@@ -7,6 +7,8 @@ export default {
       lightbg: '#f9f9f9',
       white: '#ffffff',
       greyline: '#cdd3d7',
+      'message-red': '#EE4B2B',
+      'message-green': '#039f2f',
     },
   },
 

@@ -17,6 +17,11 @@ body {
   width: 100%;
 }
 
+input {
+  padding-left: 10px;
+  color: black;
+}
+
 @media (max-width: 768px) {
   .herom {
     background-image: linear-gradient(to top, #12121168, #87848479, #0d0c0c74),
