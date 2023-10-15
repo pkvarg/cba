@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-// import { Link } from 'react-scroll'
+import { Link } from 'react-scroll'
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false)
 
   return (
-    <header className='bg-[#d1d1d1]'>
+    <header className='herom'>
       <nav className='w-full text-white nav-font'>
         <div className='justify-between px-4 mx-auto md:items-center md:flex md:px-8'>
           <div className='mb-0 lg:mb-2'>
             <div className='flex items-center justify-between py-3 md:py-5 md:block'>
-              <a className='text-[2.05rem] text-title3 font-semibold' href='/'>
+              <a className='text-[2.05rem] font-normal' href='/'>
                 Cirkev v Bratislave
               </a>
               <div className='md:hidden'>
@@ -59,10 +59,30 @@ const Header = () => {
             >
               <ul className='justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-[30px] lg:text-[25px]'>
                 <li>
-                  <a href='/'>O nás</a>
+                  {/* <a href='/'>O nás</a> */}
+                  <Link
+                    to='about'
+                    spy={true}
+                    smooth={true}
+                    offset={0}
+                    duration={500}
+                    className='hover:text-dark-red'
+                  >
+                    O nás
+                  </Link>
                 </li>
                 <li>
-                  <a href='/'>Vyznanie viery</a>
+                  <Link
+                    to='faith'
+                    spy={true}
+                    smooth={true}
+                    offset={0}
+                    duration={500}
+                    className='hover:text-dark-red'
+                  >
+                    Vyznanie viery
+                  </Link>
+                  {/* <a href='/'>Vyznanie viery</a> */}
                 </li>
                 <li>
                   <a href='/'>Podujatia</a>

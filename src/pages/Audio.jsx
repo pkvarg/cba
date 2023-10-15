@@ -11,8 +11,8 @@ const Audio = () => {
   }
 
   return (
-    <div className='h-[90vh] bg-black text-white text-[35px] p-[35px]'>
-      <h1 className='text-center'>Audio</h1>
+    <div className='h-[95vh] bg-dark text-white text-[35px]'>
+      <h1 className='text-center py-16'>Audio</h1>
       <form
         onSubmit={handleFormSubmit}
         className='flex flex-col justify-center items-center pt-8'

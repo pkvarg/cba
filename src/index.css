@@ -5,15 +5,24 @@
 @tailwind utilities;
 
 body {
-  /* background-color: black; */
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 .hero {
-  background-image: linear-gradient(to top, #12121100, #87848479, #453f3f74),
-    url('/stream.webp');
+  background-image: linear-gradient(to top, #12121168, #87848479, #0d0c0c74),
+    url('/vineyard.webp');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .herom {
+    background-image: linear-gradient(to top, #12121168, #87848479, #0d0c0c74),
+      url('/vineyard.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: calc(310%);
+  }
 }
