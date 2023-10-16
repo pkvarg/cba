@@ -22,32 +22,6 @@ input {
   color: black;
 }
 
-.myBtn {
-  background: #fff; /* Initial background color */
-  color: #000; /* Text color */
-  padding: 10px 20px; /* Adjust padding as needed */
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.myBtn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: #4caf50; /* Green background color */
-  z-index: -1;
-  transition: left 0.5s ease;
-}
-
-.myBtn:hover::before {
-  left: 0;
-}
-
 @media (max-width: 768px) {
   .herom {
     background-image: linear-gradient(to top, #12121168, #87848479, #0d0c0c74),

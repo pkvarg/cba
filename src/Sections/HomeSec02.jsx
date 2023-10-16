@@ -23,25 +23,25 @@ const HomeSec02 = () => {
           Pevne veríme, že Boh je večne jeden a tiež večne Otcom, Synom a Duchom
           – traja, ktorí sú odlišní avšak neoddeliteľní.
         </p>
-        <p>
-          Veríme, že Kristus je úplný Boh i dokonalý človek. Bez opustenia
-          Svojho božstva bol počatý v lone ľudskej panny, žil naozajstným
-          ľudským životom na zemi a zomrel zástupnú a všetko zahŕňajúcu smrť na
-          kríži. Po troch dňoch vstal telesne z mŕtvych a vystúpil do nebies.
-          Teraz je v sláve, plne Boh a stále plne človek. Očakávame Jeho blízky
-          príchod s Božím kráľovstvom, skrze ktoré bude vládnuť nad zemou v
-          miléniu a vo večnosti.
-        </p>
 
         <button
-          className='ml-auto hover:bg-green-400  w-[100px]'
+          className='ml-[48%] mt-12 mb-4 rounded-3xl border border-l-emerald-100 hover:bg-green-400  w-[100px]'
           onClick={() => setShowMore((prev) => !prev)}
         >
-          {showMore ? 'menej' : 'viac...'}
+          {showMore ? 'menej' : 'viac'}
         </button>
 
         {showMore && (
           <>
+            <p>
+              Veríme, že Kristus je úplný Boh i dokonalý človek. Bez opustenia
+              Svojho božstva bol počatý v lone ľudskej panny, žil naozajstným
+              ľudským životom na zemi a zomrel zástupnú a všetko zahŕňajúcu smrť
+              na kríži. Po troch dňoch vstal telesne z mŕtvych a vystúpil do
+              nebies. Teraz je v sláve, plne Boh a stále plne človek. Očakávame
+              Jeho blízky príchod s Božím kráľovstvom, skrze ktoré bude vládnuť
+              nad zemou v miléniu a vo večnosti.
+            </p>
             <p>
               Vyznávame, že tretí z Trojice, Duch, je takisto Bohom. Všetko, čo
               Otec má a je, je vyjadrené Synom a všetko, čo Syn má a je, je

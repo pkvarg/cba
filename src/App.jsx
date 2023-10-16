@@ -5,7 +5,6 @@ import Login from './pages/Login'
 import Footer from './components/Footer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { StateContext } from './context/StateContext'
-
 import { firebaseConfig } from '../firebaseConfig'
 import { initializeApp } from 'firebase/app'
 

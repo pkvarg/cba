@@ -8,7 +8,6 @@ import {
 } from 'firebase/auth'
 import { app } from '../App'
 import { useNavigate } from 'react-router-dom'
-import HeaderLogin from '../components/HeaderLogin'
 
 const Login = () => {
   const [login, setLogin] = useState(false)
@@ -79,7 +78,7 @@ const Login = () => {
           <img className='w-[200px]' src='fb.webp' alt='fb' />
         </button>
         <p className='mx-4'>alebo</p>
-        <button className='' onClick={GoogleAuthButtonClicked}>
+        <button onClick={GoogleAuthButtonClicked}>
           <img
             className='w-[160px] h-[55px] mt-[20px] ml-[15px]'
             src='gl.webp'

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-scroll'
 import LanguageBar from './LanguageBar'
 
-const Header = ({ content }) => {
+const Header = ({ content, showContactForm, setShowContactForm }) => {
   const [navbar, setNavbar] = useState(false)
 
   return (
@@ -86,7 +86,16 @@ const Header = ({ content }) => {
                   {/* <a href='/'>Vyznanie viery</a> */}
                 </li>
                 <li>
-                  <a href='/login'>Login</a>
+                  <Link
+                    to='events'
+                    spy={true}
+                    smooth={true}
+                    offset={0}
+                    duration={500}
+                    className='hover:text-dark-red'
+                  >
+                    Podujatia
+                  </Link>
                 </li>
                 <li>
                   <a href='/'>Linky</a>
@@ -95,7 +104,20 @@ const Header = ({ content }) => {
                   <a href='/'>Eshop</a>
                 </li>
                 <li>
-                  <a href='/'>Kontakt</a>
+                  <Link
+                    to='contact'
+                    spy={true}
+                    smooth={true}
+                    offset={0}
+                    duration={500}
+                    className='hover:text-dark-red'
+                    onClick={() => setShowContactForm(true)}
+                  >
+                    Kontakt
+                  </Link>
+                </li>
+                <li>
+                  <a href='/login'>Login</a>
                 </li>
                 <li>
                   <a href='/audio'>Audio</a>

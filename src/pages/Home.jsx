@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import HomeSec01 from '../Sections/HomeSec01'
 import HomeSec02 from '../Sections/HomeSec02'
+import HomeSec03 from '../Sections/HomeSec03'
 import Translation from '../Home.json'
 import { useStateContext } from '../context/StateContext'
 import Contact from '../Sections/Contact'
@@ -9,6 +10,7 @@ import Contact from '../Sections/Contact'
 const Home = () => {
   const { language } = useStateContext()
   const [content, setContent] = useState({})
+  const [showContactForm, setShowContactForm] = useState(false)
   const [cookieAccept, setCookieAccept] = useState(false)
   useEffect(() => {
     if (language === 'slovak') {
@@ -18,9 +20,15 @@ const Home = () => {
     }
   }, [language])
 
+  console.log(showContactForm)
+
   return (
     <>
-      <Header content={content} />
+      <Header
+        content={content}
+        showContactForm={showContactForm}
+        setShowContactForm={setShowContactForm}
+      />
       <div className='hero h-[90vh] lg:h-[110vh] text-[25px] text-white -mt-[25%] lg:-mt-[8%]'>
         <h1 className='text-center text-[75px] pt-[50%] lg:pt-[20%]'>
           {content.headerTitle}
@@ -34,7 +42,13 @@ const Home = () => {
       </div>
       <HomeSec01 />
       <HomeSec02 />
-      <Contact content={content} />
+      <HomeSec03 />
+
+      <Contact
+        showContactForm={showContactForm}
+        setShowContactForm={setShowContactForm}
+        content={content}
+      />
     </>
   )
 }
