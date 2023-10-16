@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-scroll'
-import LanguageBar from './LanguageBar'
 
-const Header = ({ content }) => {
+const HeaderLogin = ({ content }) => {
   const [navbar, setNavbar] = useState(false)
 
   return (
@@ -12,7 +10,7 @@ const Header = ({ content }) => {
           <div className='mb-0 lg:mb-2'>
             <div className='flex items-center justify-between py-3 md:py-5 md:block'>
               <a className='text-[2.05rem] font-normal' href='/'>
-                {content.headerTitle}
+                Domov
               </a>
               <div className='md:hidden'>
                 <button
@@ -60,31 +58,9 @@ const Header = ({ content }) => {
             >
               <ul className='justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-[30px] lg:text-[25px]'>
                 <li>
-                  {/* <a href='/'>O nás</a> */}
-                  <Link
-                    to='about'
-                    spy={true}
-                    smooth={true}
-                    offset={0}
-                    duration={500}
-                    className='hover:text-dark-red'
-                  >
-                    O nás
-                  </Link>
+                  <a href='/'>O nás</a>
                 </li>
-                <li>
-                  <Link
-                    to='faith'
-                    spy={true}
-                    smooth={true}
-                    offset={0}
-                    duration={500}
-                    className='hover:text-dark-red'
-                  >
-                    Vyznanie viery
-                  </Link>
-                  {/* <a href='/'>Vyznanie viery</a> */}
-                </li>
+                <li>{/* <a href='/'>Vyznanie viery</a> */}</li>
                 <li>
                   <a href='/login'>Login</a>
                 </li>
@@ -100,9 +76,6 @@ const Header = ({ content }) => {
                 <li>
                   <a href='/audio'>Audio</a>
                 </li>
-                <li>
-                  <LanguageBar />
-                </li>
               </ul>
             </div>
           </div>
@@ -112,4 +85,4 @@ const Header = ({ content }) => {
   )
 }
 
-export default Header
+export default HeaderLogin
