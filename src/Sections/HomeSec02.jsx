@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const HomeSec02 = () => {
+  const [showMore, setShowMore] = useState(false)
+
   return (
     <div className='bg-dark text-white' id='faith'>
       <h1 className='text-center text-[40px] font-medium pt-16 uppercase'>
@@ -30,26 +32,39 @@ const HomeSec02 = () => {
           príchod s Božím kráľovstvom, skrze ktoré bude vládnuť nad zemou v
           miléniu a vo večnosti.
         </p>
-        <p>
-          Vyznávame, že tretí z Trojice, Duch, je takisto Bohom. Všetko, čo Otec
-          má a je, je vyjadrené Synom a všetko, čo Syn má a je, je uskutočnené
-          ako Duch.
-        </p>
-        <p>
-          Ďalej veríme, že ľudstvo potrebuje Božiu spásu. Keďže sme boli úplne
-          neschopní naplniť ťažké požiadavky Božej spravodlivosti, svätosti a
-          slávy, Kristus všetky požiadavky naplnil Svojou smrťou na kríži. Kvôli
-          Kristovej smrti nám Boh odpustil naše hriechy, zmieril nás so sebou
-          samým a ospravedlnil nás tým, že Krista učinil našou spravodlivosťou.
-          Na základe Kristovho vykúpenia Boh obrodzuje vykúpených Svojím Duchom
-          pre dovŕšenie svoje spásy, aby sa mohli stať Jeho deťmi.
-        </p>
-        <p>
-          Majúc teraz Boží život a prirodzenosť, veriaci vychutnávajú každodennú
-          spásu v Jeho Tele v tomto veku a večnú spásu v prichádzajúcom veku a
-          vo večnosti. Vo večnosti budeme prebývať s Bohom v Novom Jeruzaleme,
-          dovŕšení Božej spásy Jeho vyvolených.
-        </p>
+
+        <button
+          className='ml-auto hover:bg-green-400  w-[100px]'
+          onClick={() => setShowMore((prev) => !prev)}
+        >
+          {showMore ? 'menej' : 'viac...'}
+        </button>
+
+        {showMore && (
+          <>
+            <p>
+              Vyznávame, že tretí z Trojice, Duch, je takisto Bohom. Všetko, čo
+              Otec má a je, je vyjadrené Synom a všetko, čo Syn má a je, je
+              uskutočnené ako Duch.
+            </p>
+            <p>
+              Ďalej veríme, že ľudstvo potrebuje Božiu spásu. Keďže sme boli
+              úplne neschopní naplniť ťažké požiadavky Božej spravodlivosti,
+              svätosti a slávy, Kristus všetky požiadavky naplnil Svojou smrťou
+              na kríži. Kvôli Kristovej smrti nám Boh odpustil naše hriechy,
+              zmieril nás so sebou samým a ospravedlnil nás tým, že Krista
+              učinil našou spravodlivosťou. Na základe Kristovho vykúpenia Boh
+              obrodzuje vykúpených Svojím Duchom pre dovŕšenie svoje spásy, aby
+              sa mohli stať Jeho deťmi.
+            </p>
+            <p>
+              Majúc teraz Boží život a prirodzenosť, veriaci vychutnávajú
+              každodennú spásu v Jeho Tele v tomto veku a večnú spásu v
+              prichádzajúcom veku a vo večnosti. Vo večnosti budeme prebývať s
+              Bohom v Novom Jeruzaleme, dovŕšení Božej spásy Jeho vyvolených.
+            </p>
+          </>
+        )}
       </div>
     </div>
   )
