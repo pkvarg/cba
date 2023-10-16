@@ -73,21 +73,21 @@ const Login = () => {
       <a className='absolute top-2 left-2 text-white' href='/'>
         Domov
       </a>
-      <div className='flex flex-row justify-center items-center text-center mt-4'>
+      <div className='flex flex-col lg:flex-row justify-center items-center text-center mt-12 lg:mt-4'>
         <button className='' onClick={FacebookAuthButtonClicked}>
           <img className='w-[200px]' src='fb.webp' alt='fb' />
         </button>
-        <p className='mx-4'>alebo</p>
+        <p className='mx-4 mt-[10px]'>alebo</p>
         <button onClick={GoogleAuthButtonClicked}>
           <img
-            className='w-[160px] h-[55px] mt-[20px] ml-[15px]'
+            className='w-[160px] h-[55px] mt-[15px] ml-[15px]'
             src='gl.webp'
             alt='google'
           />
         </button>
       </div>
 
-      <p className='text-center mt-8'>
+      <p className='text-center mt-16 mx-4'>
         Urob zoznam userov a podmienku.., ktorí sa budú môcť prihlásiť a čo
         vidieť
       </p>

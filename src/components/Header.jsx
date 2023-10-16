@@ -97,12 +97,12 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     Podujatia
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href='/'>Linky</a>
                 </li>
                 <li>
                   <a href='/'>Eshop</a>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     to='contact'

@@ -11,14 +11,22 @@ const Audio = () => {
   }
 
   return (
-    <div className='h-[95vh] bg-dark text-white text-[35px]'>
-      <h1 className='text-center py-16'>Audio</h1>
+    <div className='h-[95vh] bg-dark text-white text-[35px] relative'>
+      <a className='absolute top-2 left-2 text-white' href='/'>
+        Home
+      </a>
+      <h1 className='text-center text-green-700 py-16'>
+        Audio for Translation of the Meetings
+      </h1>
+      <h2 className='text-center text-yellow-600'>
+        Room Code will be announced...
+      </h2>
       <form
         onSubmit={handleFormSubmit}
         className='flex flex-col justify-center items-center pt-8'
       >
-        <div className='text-black my-4'>
-          <label className='block'>Enter Room Code</label>
+        <div className='text-white my-4'>
+          <label className='block text-[25px] '>Enter Room Code</label>
           <input
             type='text'
             required
@@ -27,7 +35,9 @@ const Audio = () => {
             className='pl-1'
           />
         </div>
-        <button type='submit'>Enter Room</button>
+        <button className='text-green-700' type='submit'>
+          Enter Room
+        </button>
       </form>
     </div>
   )

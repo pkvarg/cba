@@ -24,12 +24,14 @@ const HomeSec02 = () => {
           – traja, ktorí sú odlišní avšak neoddeliteľní.
         </p>
 
-        <button
-          className='ml-[48%] mt-12 mb-4 rounded-3xl border border-l-emerald-100 hover:bg-green-400  w-[100px]'
-          onClick={() => setShowMore((prev) => !prev)}
-        >
-          {showMore ? 'menej' : 'viac'}
-        </button>
+        <div className='flex justify-center'>
+          <button
+            className='mt-12 mb-4 rounded-2xl border border-l-emerald-100 hover:bg-white hover:text-dark hover:border-dark hover:border-2 w-[75px] '
+            onClick={() => setShowMore((prev) => !prev)}
+          >
+            {showMore ? 'menej' : 'viac'}
+          </button>
+        </div>
 
         {showMore && (
           <>
