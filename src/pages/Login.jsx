@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   GoogleAuthProvider,
   FacebookAuthProvider,
@@ -14,10 +14,9 @@ import CreatedBlogs from '../Sections/CreatedBlogs'
 
 const Login = () => {
   const { isLoggedIn, setIsLoggedIn } = useStateContext()
-
+  const loggedValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
   const [name, setName] = useState('')
   const [showAdminContent, setShowAdminContent] = useState(false)
-  const [showCreateBlog, setShowCreateBlog] = useState(false)
 
   const auth = getAuth(app)
   const fbAuthProvider = new FacebookAuthProvider()
@@ -49,7 +48,6 @@ const Login = () => {
   async function GoogleAuthButtonClicked() {
     try {
       const res = await GoogleAuth()
-      console.log('gl user', res)
       if (res.user.accessToken) {
         setIsLoggedIn(true)
         setName(res.user.displayName)
@@ -68,32 +66,34 @@ const Login = () => {
   }
 
   const adminContent = () => {
-    setShowAdminContent(true)
-    setShowCreateBlog(true)
+    setShowAdminContent((prev) => !prev)
   }
 
+  useEffect(() => {
+    const loggedStorage = localStorage.getItem('blogging')
+    if (loggedStorage === loggedValue)
+      // set logged in...
+      console.log(loggedStorage)
+  }, [])
+
+  console.log(isLoggedIn)
   return (
     <div
       className={
-        showCreateBlog
+        isLoggedIn
           ? 'bg-dark text-white text-[30px] pt-2 relative'
-          : 'h-[90vh] bg-dark text-white text-[30px] pt-2 relative'
+          : 'bg-dark text-white text-[30px] pt-2 relative'
       }
     >
       <h1 className='text-center text-green-600'>Prihlásiť sa cez</h1>
-
-      <button
-        className='absolute top-2 right-[8%] text-yellow-400'
-        onClick={adminContent}
-      >
-        Obsah
-      </button>
-      <button
-        className='absolute top-2 right-4 text-red-400'
-        onClick={SignUserOut}
-      >
-        Odhlásiť
-      </button>
+      {isLoggedIn && (
+        <button
+          className='absolute top-2 right-4 text-red-400'
+          onClick={SignUserOut}
+        >
+          Odhlásiť
+        </button>
+      )}
       <a className='absolute top-2 left-2 text-white' href='/'>
         Domov
       </a>
@@ -116,33 +116,39 @@ const Login = () => {
         vidieť
       </p> */}
 
-      <div className='flex flex-col gap-4'>
-        {isLoggedIn && (
-          <div className='m-auto'>
-            <h1 className='ml-16 mt-8'>
-              Vitaj
-              <span className=' text-green-400'> {name}</span>
-            </h1>
-            <p>Teraz vidíš tajný obsahhhh...</p>
+      {isLoggedIn && (
+        <>
+          <div className='flex flex-col gap-4'>
+            <div className='m-auto'>
+              <h1 className='ml-16 mt-8 text-yellow-500 text-[50px] text-center'>
+                Vitaj
+                <span className=' text-green-400'> {name}</span>
+              </h1>
+              <p className='text-center'>
+                Pre tvorbu obsahu klikni sem...
+                <button className='text-yellow-400' onClick={adminContent}>
+                  Obsah
+                </button>
+              </p>
+            </div>
           </div>
-        )}
-      </div>
 
-      <div className='flex flex-col gap-4'>
-        {showAdminContent && (
-          <div className='m-auto'>
-            <h1 className='ml-16 my-8 text-center text-[45px] text-green-500'>
-              Napíš nový príspevok
-            </h1>
-            {showCreateBlog && (
-              <>
-                <CreateBlog setShowCreateBlog={setShowCreateBlog} />
-                <CreatedBlogs />
-              </>
+          <div className='flex flex-col gap-4'>
+            {showAdminContent && (
+              <div className='m-auto'>
+                <h1 className='ml-16 my-8 text-center text-[45px] text-green-500'>
+                  Napíš nový príspevok
+                </h1>
+
+                <>
+                  <CreateBlog />
+                  <CreatedBlogs />
+                </>
+              </div>
             )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   )
 }

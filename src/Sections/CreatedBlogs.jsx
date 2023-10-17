@@ -11,8 +11,6 @@ const CreatedBlogs = () => {
       try {
         const { data } = await axios.get('http://localhost:2000/api/cba/blogs')
 
-        console.log(data)
-
         if (data) {
           setBlogs(data)
         }
@@ -43,14 +41,18 @@ const CreatedBlogs = () => {
           <div
             className='py-8 cursor-pointer'
             key={blog._id}
-            onClick={() => navigate(`/login/${blog._id}`)}
+            onClick={() => navigate(`/edit/${blog._id}`)}
           >
             <h1 className='text-green-300'>Nadpis: {blog.title}</h1>
             <h2>Kategória: {blog.category}</h2>
             <div className='flex flex-row gap-2'>
               <p>Obrázok: </p>
               {blog.media !== '' ? (
-                <img className='w-[250px]' src={blog.media} alt={blog.title} />
+                <img
+                  className='w-[250px] lg:w-[100px]'
+                  src={blog.media}
+                  alt={blog.title}
+                />
               ) : (
                 <p>bez obrázku</p>
               )}

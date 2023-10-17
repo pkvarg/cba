@@ -9,45 +9,8 @@ import { app } from '../App'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-export let dLink
-
-export const uploadFirebase = (file, setMedia) => {
-  const storage = getStorage(app)
-  const upload = () => {
-    const name = new Date().getTime() + file.name
-    const storageRef = ref(storage, name)
-
-    const uploadTask = uploadBytesResumable(storageRef, file)
-
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        console.log('Upload is ' + progress + '% done')
-        switch (snapshot.state) {
-          case 'paused':
-            console.log('Upload is paused')
-            break
-          case 'running':
-            console.log('Upload is running')
-            break
-        }
-      },
-      (error) => {},
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          //setMedia(downloadURL)
-          dLink = downloadURL
-        })
-      }
-    )
-  }
-
-  file && upload()
-  return dLink
-}
-
-const CreateBlog = ({ setShowCreateBlog }) => {
+const CreateBlog = () => {
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
   const [text, setText] = useState('')
@@ -58,43 +21,41 @@ const CreateBlog = ({ setShowCreateBlog }) => {
   const [data, setData] = useState({})
 
   useEffect(() => {
-    // const storage = getStorage(app)
-    // const upload = () => {
-    //   const name = new Date().getTime() + file.name
-    //   const storageRef = ref(storage, name)
+    const storage = getStorage(app)
+    const upload = () => {
+      const name = new Date().getTime() + file.name
+      const storageRef = ref(storage, name)
 
-    //   const uploadTask = uploadBytesResumable(storageRef, file)
+      const uploadTask = uploadBytesResumable(storageRef, file)
 
-    //   uploadTask.on(
-    //     'state_changed',
-    //     (snapshot) => {
-    //       const progress =
-    //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-    //       console.log('Upload is ' + progress + '% done')
-    //       switch (snapshot.state) {
-    //         case 'paused':
-    //           console.log('Upload is paused')
-    //           break
-    //         case 'running':
-    //           console.log('Upload is running')
-    //           break
-    //       }
-    //     },
-    //     (error) => {},
-    //     () => {
-    //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-    //         setMedia(downloadURL)
-    //       })
-    //     }
-    //   )
-    // }
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log('Upload is ' + progress + '% done')
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused')
+              break
+            case 'running':
+              console.log('Upload is running')
+              break
+          }
+        },
+        (error) => {},
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setMedia(downloadURL)
+          })
+        }
+      )
+    }
 
-    // file && upload()
-    uploadFirebase(file, setMedia)
+    file && upload()
   }, [file])
 
   const handleSubmit = async () => {
-    console.log(title, category, media, text)
     try {
       const res = await axios.post('http://localhost:2000/api/cba/blog', {
         title,
@@ -103,16 +64,15 @@ const CreateBlog = ({ setShowCreateBlog }) => {
         text,
       })
 
-      console.log(res)
+      console.log('res', res.status)
 
       if (res.status === 201) {
-        console.log(res.data)
-        setData(res.data)
+        //setData(res.data)
         setTitle('')
-        setCategory(' ')
+        setCategory('')
         setFile('')
         setText('')
-        setShowCreateBlog(false)
+        navigate('/login')
       }
     } catch (error) {
       console.log(error)

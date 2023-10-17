@@ -20,7 +20,8 @@ function App() {
           <Route path='/audio' element={<Audio />} />
           <Route path='/room/:roomId' element={<RoomPage />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/login/:id' element={<EditBlog />} />
+          {/* <Route path='/login/:id' element={<EditBlog />} /> */}
+          <Route path='/edit/:id' element={<EditBlog />} />
         </Routes>
         <Footer />
       </StateContext>

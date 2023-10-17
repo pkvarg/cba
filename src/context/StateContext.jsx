@@ -4,6 +4,7 @@ const Context = createContext()
 export const StateContext = ({ children }) => {
   const [language, setLanguage] = useState('slovak')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const loggedValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
 
   useEffect(() => {
     const LocalStorageLanguage = window.localStorage.getItem('language')
@@ -13,7 +14,8 @@ export const StateContext = ({ children }) => {
 
   useEffect(() => {
     window.localStorage.setItem('language', JSON.stringify(language))
-  }, [language])
+    window.localStorage.setItem('blogging', JSON.stringify(loggedValue))
+  }, [language, isLoggedIn])
 
   return (
     <Context.Provider

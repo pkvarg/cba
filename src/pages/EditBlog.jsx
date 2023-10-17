@@ -8,7 +8,6 @@ import {
   getDownloadURL,
 } from 'firebase/storage'
 import { app } from '../App'
-import { uploadFirebase, dLink } from '../Sections/CreateBlog'
 
 const EditBlog = () => {
   const { id } = useParams()
@@ -45,9 +44,38 @@ const EditBlog = () => {
   }, [])
 
   useEffect(() => {
-    const link = uploadFirebase(file)
-    console.log(link)
-    setMedia(link)
+    const storage = getStorage(app)
+    const upload = () => {
+      const name = new Date().getTime() + file.name
+      const storageRef = ref(storage, name)
+
+      const uploadTask = uploadBytesResumable(storageRef, file)
+
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log('Upload is ' + progress + '% done')
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused')
+              break
+            case 'running':
+              console.log('Upload is running')
+              break
+          }
+        },
+        (error) => {},
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setMedia(downloadURL)
+          })
+        }
+      )
+    }
+
+    file && upload()
   }, [file])
 
   const afterSuccess = () => {
@@ -107,13 +135,13 @@ const EditBlog = () => {
   }
 
   return (
-    <div className='bg-dark h-[120vh] text-white text-[30px] relative'>
+    <div className='bg-dark text-white text-[30px] relative'>
       <a className='absolute top-2 left-2 text-white' href='/login'>
         Naspäť
       </a>
       <h1 className='text-[45px] text-center text-green-400'>Editovať blog</h1>
       {blog && (
-        <div className='relative flex flex-col mx-[35%] mt-16'>
+        <div className='relative flex flex-col mx-2 lg:mx-[35%] mt-16'>
           <label className='text-[30px] py-1' htmlFor='text'>
             Nadpis
           </label>
@@ -147,7 +175,6 @@ const EditBlog = () => {
                   type='file'
                   id='image'
                   onChange={(e) => setFile(e.target.files[0])}
-                  // onChange={(e) => onFileChange(e)}
                   style={{ display: 'none' }}
                 />
                 <button className='border border-white w-[36px] h-[36px] 100 flex items-center justify-center cursor-pointer'>
@@ -159,7 +186,9 @@ const EditBlog = () => {
             )}
           </div>
 
-          {media && <img className='my-4 w-[25%]' src={media} alt='file' />}
+          {media && (
+            <img className='my-4 w-[50%] lg:w-[25%]' src={media} alt='file' />
+          )}
 
           <textarea
             className='text-dark mt-4 pl-1'
