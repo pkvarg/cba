@@ -7,8 +7,47 @@ import {
 } from 'firebase/storage'
 import { app } from '../App'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const CreateBlog = () => {
+export let dLink
+
+export const uploadFirebase = (file, setMedia) => {
+  const storage = getStorage(app)
+  const upload = () => {
+    const name = new Date().getTime() + file.name
+    const storageRef = ref(storage, name)
+
+    const uploadTask = uploadBytesResumable(storageRef, file)
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        console.log('Upload is ' + progress + '% done')
+        switch (snapshot.state) {
+          case 'paused':
+            console.log('Upload is paused')
+            break
+          case 'running':
+            console.log('Upload is running')
+            break
+        }
+      },
+      (error) => {},
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          //setMedia(downloadURL)
+          dLink = downloadURL
+        })
+      }
+    )
+  }
+
+  file && upload()
+  return dLink
+}
+
+const CreateBlog = ({ setShowCreateBlog }) => {
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
   const [text, setText] = useState('')
@@ -16,39 +55,42 @@ const CreateBlog = () => {
   const [category, setCategory] = useState('')
   const [media, setMedia] = useState('')
 
+  const [data, setData] = useState({})
+
   useEffect(() => {
-    const storage = getStorage(app)
-    const upload = () => {
-      const name = new Date().getTime() + file.name
-      const storageRef = ref(storage, name)
+    // const storage = getStorage(app)
+    // const upload = () => {
+    //   const name = new Date().getTime() + file.name
+    //   const storageRef = ref(storage, name)
 
-      const uploadTask = uploadBytesResumable(storageRef, file)
+    //   const uploadTask = uploadBytesResumable(storageRef, file)
 
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          console.log('Upload is ' + progress + '% done')
-          switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused')
-              break
-            case 'running':
-              console.log('Upload is running')
-              break
-          }
-        },
-        (error) => {},
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setMedia(downloadURL)
-          })
-        }
-      )
-    }
+    //   uploadTask.on(
+    //     'state_changed',
+    //     (snapshot) => {
+    //       const progress =
+    //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    //       console.log('Upload is ' + progress + '% done')
+    //       switch (snapshot.state) {
+    //         case 'paused':
+    //           console.log('Upload is paused')
+    //           break
+    //         case 'running':
+    //           console.log('Upload is running')
+    //           break
+    //       }
+    //     },
+    //     (error) => {},
+    //     () => {
+    //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    //         setMedia(downloadURL)
+    //       })
+    //     }
+    //   )
+    // }
 
-    file && upload()
+    // file && upload()
+    uploadFirebase(file, setMedia)
   }, [file])
 
   const handleSubmit = async () => {
@@ -61,9 +103,16 @@ const CreateBlog = () => {
         text,
       })
 
-      if (res.status === 200) {
-        const data = await res.json()
-        console.log(data)
+      console.log(res)
+
+      if (res.status === 201) {
+        console.log(res.data)
+        setData(res.data)
+        setTitle('')
+        setCategory(' ')
+        setFile('')
+        setText('')
+        setShowCreateBlog(false)
       }
     } catch (error) {
       console.log(error)
@@ -72,6 +121,9 @@ const CreateBlog = () => {
 
   return (
     <div className='relative flex flex-col'>
+      <label className='text-[30px] py-1' htmlFor='text'>
+        Nadpis
+      </label>
       <input
         type='text'
         placeholder='Nadpis'
@@ -108,17 +160,17 @@ const CreateBlog = () => {
                 <img src='/image.png' alt='' width={16} height={16} />
               </label>
             </button>
-            <button className='border border-white w-[36px] h-[36px] 100 flex items-center justify-center cursor-pointer'>
-              <img src='/external.png' alt='' width={16} height={16} />
-            </button>
-            <button className='border border-white w-[36px] h-[36px] 100 flex items-center justify-center cursor-pointer'>
-              <img src='/video.png' alt='' width={16} height={16} />
-            </button>
           </div>
         )}
       </div>
+      {media !== '' ? (
+        <img className='w-[250px] my-4' src={media} alt={title} />
+      ) : (
+        <p>bez obrázku</p>
+      )}
+
       <textarea
-        className='w-[300px] text-dark mt-4 pl-1'
+        className='text-dark mt-4 pl-1'
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder='Text...'
