@@ -7,16 +7,15 @@ import {
 } from 'firebase/storage'
 import { app } from '../App'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 
 const CreateBlog = () => {
-  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
   const [text, setText] = useState('')
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [media, setMedia] = useState('')
+  const [success, setSuccess] = useState('')
 
   const [data, setData] = useState({})
 
@@ -55,6 +54,10 @@ const CreateBlog = () => {
     file && upload()
   }, [file])
 
+  const reloadOnSuccess = () => {
+    window.location.reload()
+  }
+
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
@@ -71,12 +74,8 @@ const CreateBlog = () => {
       console.log('res', res.status)
 
       if (res.status === 201) {
-        //setData(res.data)
-        setTitle('')
-        setCategory('')
-        setFile('')
-        setText('')
-        navigate('/login')
+        setSuccess('Príspevok úspešne vytvorený')
+        setTimeout(reloadOnSuccess, 3000)
       }
     } catch (error) {
       console.log(error)
@@ -142,6 +141,7 @@ const CreateBlog = () => {
       <button className='mt-4 text-green-400' onClick={handleSubmit}>
         Publikovať
       </button>
+      {success && <p className='text-center'>{success}</p>}
     </div>
   )
 }

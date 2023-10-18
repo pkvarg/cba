@@ -25,8 +25,7 @@ const EditBlog = () => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
-          `https://api.pictusweb.com
-          /api/cba/blogs/${id}`
+          `https://api.pictusweb.com/api/cba/blogs/${id}`
           // `http://localhost:2000/api/cba/blogs/${id}`
         )
 
@@ -126,7 +125,6 @@ const EditBlog = () => {
           // `http://localhost:2000/api/cba/blogs/${id}`
         )
 
-        console.log(res)
         if (res.status === 200) {
           setSuccess('Príspevok úspešne vymazaný')
           navigate('/login')
