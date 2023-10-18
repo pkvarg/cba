@@ -60,7 +60,9 @@ const Login = () => {
   const SignUserOut = () => {
     signOut(auth).then(() => {
       setIsLoggedIn(false)
-      console.log('out')
+
+      localStorage.removeItem('blogging')
+
       navigate('/')
     })
   }
@@ -70,13 +72,16 @@ const Login = () => {
   }
 
   useEffect(() => {
-    const loggedStorage = localStorage.getItem('blogging')
-    if (loggedStorage === loggedValue)
-      // set logged in...
-      console.log(loggedStorage)
-  }, [])
+    const loggedStorage = JSON.parse(localStorage.getItem('blogging'))
+    const theValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
+    if (loggedStorage === theValue) {
+      setIsLoggedIn(true)
+    }
+    if (isLoggedIn === true) {
+      window.localStorage.setItem('blogging', JSON.stringify(loggedValue))
+    }
+  }, [isLoggedIn])
 
-  console.log(isLoggedIn)
   return (
     <div
       className={
@@ -129,6 +134,9 @@ const Login = () => {
                 <button className='text-yellow-400' onClick={adminContent}>
                   Obsah
                 </button>
+              </p>
+              <p className='text-center'>
+                zvolená kategória určí, kde sa príspevok zobrazí
               </p>
             </div>
           </div>

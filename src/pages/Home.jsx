@@ -20,8 +20,6 @@ const Home = () => {
     }
   }, [language])
 
-  console.log(showContactForm)
-
   return (
     <>
       <Header

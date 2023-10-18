@@ -14,8 +14,7 @@ export const StateContext = ({ children }) => {
 
   useEffect(() => {
     window.localStorage.setItem('language', JSON.stringify(language))
-    window.localStorage.setItem('blogging', JSON.stringify(loggedValue))
-  }, [language, isLoggedIn])
+  }, [language])
 
   return (
     <Context.Provider
