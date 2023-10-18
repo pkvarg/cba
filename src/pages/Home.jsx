@@ -6,6 +6,7 @@ import HomeSec03 from '../Sections/HomeSec03'
 import Translation from '../Home.json'
 import { useStateContext } from '../context/StateContext'
 import Contact from '../Sections/Contact'
+import BlogByCategory from '../Sections/BlogByCategory'
 
 const Home = () => {
   const { language } = useStateContext()
@@ -41,6 +42,7 @@ const Home = () => {
       <HomeSec01 />
       <HomeSec02 />
       <HomeSec03 />
+      <BlogByCategory />
 
       <Contact
         showContactForm={showContactForm}

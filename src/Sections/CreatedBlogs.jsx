@@ -9,7 +9,10 @@ const CreatedBlogs = () => {
   useEffect(() => {
     const getBlogs = async () => {
       try {
-        const { data } = await axios.get('http://localhost:2000/api/cba/blogs')
+        const { data } = await axios.get(
+          'https://api.pictusweb.com/api/cba/blogs'
+          // 'http://localhost:2000/api/cba/blogs'
+        )
 
         if (data) {
           setBlogs(data)

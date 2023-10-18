@@ -57,12 +57,16 @@ const CreateBlog = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post('http://localhost:2000/api/cba/blog', {
-        title,
-        category,
-        media,
-        text,
-      })
+      const res = await axios.post(
+        'https://api.pictusweb.com/api/cba/blog',
+        // 'http://localhost:2000/api/cba/blog',
+        {
+          title,
+          category,
+          media,
+          text,
+        }
+      )
 
       console.log('res', res.status)
 

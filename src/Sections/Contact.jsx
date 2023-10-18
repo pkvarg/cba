@@ -64,7 +64,8 @@ const Contact = ({ showContactForm, setShowContactForm, content }) => {
 
     try {
       const { data } = await axios.put(
-        'http://localhost:2000/api/email/cba-contact',
+        'https://api.pictusweb.com/api/email/cba-contact',
+        // 'http://localhost:2000/api/email/cba-contact',
         { name, email, phone, mailMessage },
         config
       )

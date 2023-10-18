@@ -25,7 +25,9 @@ const EditBlog = () => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:2000/api/cba/blogs/${id}`
+          `https://api.pictusweb.com
+          /api/cba/blogs/${id}`
+          // `http://localhost:2000/api/cba/blogs/${id}`
         )
 
         if (data) {
@@ -94,7 +96,9 @@ const EditBlog = () => {
   const handleSubmit = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:2000/api/cba/blogs/update/${id}`,
+        `https://api.pictusweb.com/api/cba/blogs/update/${id}`,
+
+        // `http://localhost:2000/api/cba/blogs/update/${id}`,
         {
           title,
           category,
@@ -118,7 +122,8 @@ const EditBlog = () => {
     if (confirmed) {
       try {
         const res = await axios.delete(
-          `http://localhost:2000/api/cba/blogs/${id}`
+          `https://api.pictusweb.com/api/cba/blogs/${id}`
+          // `http://localhost:2000/api/cba/blogs/${id}`
         )
 
         console.log(res)
