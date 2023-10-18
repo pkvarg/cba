@@ -11,18 +11,38 @@ const RoomPage = () => {
 
     console.log(appID)
     const serverSecret = import.meta.env.VITE_ZEGO_SERVER_SECRET
+
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appID,
       serverSecret,
       roomId,
       Date.now().toString(),
-      'Your Name'
+      'Enter Your Name'
     )
     const zp = ZegoUIKitPrebuilt.create(kitToken)
+    // zp.joinRoom({
+    //   container: element,
+    //   scenario: {
+    //     mode: ZegoUIKitPrebuilt.VideoConference,
+    //   },
+    // })
     zp.joinRoom({
-      container: element,
+      turnOnMicrophoneWhenJoining: true,
+      turnOnCameraWhenJoining: false,
+      showMyCameraToggleButton: false,
+      showMyMicrophoneToggleButton: true,
+      showAudioVideoSettingsButton: false,
+      showScreenSharingButton: false,
+      showTextChat: false,
+      showUserList: false,
+      maxUsers: 50,
+      layout: 'Auto',
+      showLayoutButton: true,
       scenario: {
         mode: ZegoUIKitPrebuilt.VideoConference,
+        config: {
+          role: 'Host',
+        },
       },
     })
   }
