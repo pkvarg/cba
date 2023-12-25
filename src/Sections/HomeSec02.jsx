@@ -26,7 +26,11 @@ const HomeSec02 = () => {
 
         <div className='flex justify-center'>
           <button
-            className='mt-12 mb-4 rounded-2xl border border-l-emerald-100 hover:bg-white hover:text-dark hover:border-dark hover:border-2 w-[75px] '
+            className={
+              !showMore
+                ? 'mt-12 mb-4 rounded-2xl border border-l-emerald-100 hover:bg-white hover:text-dark hover:border-dark hover:border-2 w-[75px]'
+                : 'hidden'
+            }
             onClick={() => setShowMore((prev) => !prev)}
           >
             {showMore ? 'menej' : 'viac'}
@@ -67,6 +71,19 @@ const HomeSec02 = () => {
             </p>
           </>
         )}
+
+        <div className='flex justify-center'>
+          <button
+            className={
+              showMore
+                ? 'mt-12 mb-4 rounded-2xl border border-l-emerald-100 hover:bg-white hover:text-dark hover:border-dark hover:border-2 w-[75px]'
+                : 'hidden'
+            }
+            onClick={() => setShowMore((prev) => !prev)}
+          >
+            {showMore ? 'menej' : 'viac'}
+          </button>
+        </div>
       </div>
     </div>
   )

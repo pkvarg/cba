@@ -11,8 +11,17 @@ import { useNavigate } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
 import CreateBlog from '../Sections/CreateBlog'
 import CreatedBlogs from '../Sections/CreatedBlogs'
+import axios from 'axios'
+import { toast } from 'react-hot-toast'
+import Profile from '../components/Profile'
 
 const Login = () => {
+  // emails to db
+  const [emailToDb, setEmailToDb] = useState('')
+  const [users, setUsers] = useState([])
+  const [userId, setUserId] = useState('')
+
+  //
   const { isLoggedIn, setIsLoggedIn } = useStateContext()
   const loggedValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
   const [name, setName] = useState('')
@@ -82,6 +91,34 @@ const Login = () => {
     }
   }, [isLoggedIn])
 
+  useEffect(() => {
+    const getAllUsers = async () => {
+      try {
+        const { data } = await axios.get('http://localhost:2000/api/cba/getall')
+        if (data) {
+          setUsers(data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getAllUsers()
+  }, [userId])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await axios.post(`http://localhost:2000/api/cba/newuser`, {
+        emailToDb,
+      })
+      console.log(res)
+      if (res.status === 200) toast.error(res.data)
+      if (res.status === 201) toast.success('Užívateľ vytvorený')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div
       className={
@@ -90,7 +127,7 @@ const Login = () => {
           : 'bg-dark text-white text-[30px] pt-2 relative'
       }
     >
-      <h1 className='text-center text-green-600'>Prihlásiť sa cez</h1>
+      {/* <h1 className='text-center text-green-600'>Prihlásiť sa cez</h1> */}
       {isLoggedIn && (
         <button
           className='absolute top-2 right-4 text-red-400'
@@ -102,7 +139,41 @@ const Login = () => {
       <a className='absolute top-2 left-2 text-white' href='/'>
         Domov
       </a>
-      <div className='flex flex-col lg:flex-row justify-center items-center text-center mt-12 lg:mt-4'>
+
+      <div className={userId ? 'blur-md' : ''}>
+        <form onSubmit={handleSubmit} className='ml-4 mt-16'>
+          <input
+            type='text'
+            value={emailToDb}
+            onChange={(e) => setEmailToDb(e.target.value)}
+          />
+          <button type='submit' className='ml-2'>
+            Pridať do databázy
+          </button>
+        </form>
+
+        <p className='mt-4 border-b'>Užívatelia</p>
+        {users &&
+          users.map((user) => (
+            <div key={user._id} className='m-2 border-b'>
+              <p
+                onClick={() => setUserId(user._id)}
+                className='text-green-500 cursor-pointer'
+              >
+                Na profil
+              </p>
+              <p>meno: {user.name}</p>
+              <p>email: {user.email}</p>
+              <p className='text-red-500'>
+                {user.isAdmin === true ? 'Admin' : ''}
+              </p>
+            </div>
+          ))}
+      </div>
+
+      {userId && <Profile userId={userId} setUserId={setUserId} />}
+
+      {/* <div className='flex flex-col lg:flex-row justify-center items-center text-center mt-12 lg:mt-4'>
         <button className='' onClick={FacebookAuthButtonClicked}>
           <img className='w-[200px]' src='fb.webp' alt='fb' />
         </button>
@@ -114,14 +185,14 @@ const Login = () => {
             alt='google'
           />
         </button>
-      </div>
+      </div> */}
 
       {/* <p className='text-center mt-16 mx-4'>
         Urob zoznam userov a podmienku.., ktorí sa budú môcť prihlásiť a čo
         vidieť
       </p> */}
 
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <>
           <div className='flex flex-col gap-4'>
             <div className='m-auto'>
@@ -156,7 +227,7 @@ const Login = () => {
             )}
           </div>
         </>
-      )}
+      )} */}
     </div>
   )
 }

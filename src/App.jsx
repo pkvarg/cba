@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { StateContext } from './context/StateContext'
 import { firebaseConfig } from '../firebaseConfig'
 import { initializeApp } from 'firebase/app'
+import { Toaster } from 'react-hot-toast'
 
 export const app = initializeApp(firebaseConfig)
 
@@ -23,8 +24,9 @@ function App() {
           {/* <Route path='/login/:id' element={<EditBlog />} /> */}
           <Route path='/edit/:id' element={<EditBlog />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </StateContext>
+      <Toaster />
     </BrowserRouter>
   )
 }

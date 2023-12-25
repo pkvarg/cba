@@ -2,7 +2,7 @@ import React from 'react'
 
 const HomeSec03 = () => {
   return (
-    <div className='bg-white pb-8' id='events'>
+    <div className='bg-white py-8' id='events'>
       <h1 className='text-center text-[45px] uppercase my-8'>Podujatia</h1>
       <div className='flex flex-col items-center justify-center text-[27.5px]'>
         <h2 className='text-[35px]'>BLÍŽIACE SA PODUJATIA</h2>

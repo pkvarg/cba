@@ -7,6 +7,7 @@ import Translation from '../Home.json'
 import { useStateContext } from '../context/StateContext'
 import Contact from '../Sections/Contact'
 import BlogByCategory from '../Sections/BlogByCategory'
+import Footer from '../components/Footer'
 
 const Home = () => {
   const { language } = useStateContext()
@@ -49,6 +50,7 @@ const Home = () => {
         setShowContactForm={setShowContactForm}
         content={content}
       />
+      <Footer />
     </>
   )
 }
