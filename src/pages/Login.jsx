@@ -1,177 +1,80 @@
 import React, { useState, useEffect } from 'react'
-import {
-  GoogleAuthProvider,
-  FacebookAuthProvider,
-  signInWithPopup,
-  getAuth,
-  signOut,
-} from 'firebase/auth'
-import { app } from '../App'
+
 import { useNavigate } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
-import CreateBlog from '../Sections/CreateBlog'
-import CreatedBlogs from '../Sections/CreatedBlogs'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import Profile from '../components/Profile'
 
 const Login = () => {
-  // emails to db
-  const [emailToDb, setEmailToDb] = useState('')
-  const [users, setUsers] = useState([])
-  const [userId, setUserId] = useState('')
+  // login
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const { currentUser, setCurrentUser } = useStateContext()
 
-  //
-  const { isLoggedIn, setIsLoggedIn } = useStateContext()
+  //const { isLoggedIn, setIsLoggedIn } = useStateContext()
   const loggedValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
   const [name, setName] = useState('')
   const [showAdminContent, setShowAdminContent] = useState(false)
 
-  const auth = getAuth(app)
-  const fbAuthProvider = new FacebookAuthProvider()
-  const glAuthProvider = new GoogleAuthProvider()
-
   const navigate = useNavigate()
-
-  const FacebookAuth = async () => {
-    const fbAuth = signInWithPopup(auth, fbAuthProvider)
-    return fbAuth
-  }
-
-  const GoogleAuth = async () => {
-    const googleAuth = signInWithPopup(auth, glAuthProvider)
-    return googleAuth
-  }
-
-  async function FacebookAuthButtonClicked() {
-    try {
-      const res = await FacebookAuth()
-      if (res.user.accessToken) {
-        setIsLoggedIn(true)
-        setName(res.user.displayName)
-      }
-    } catch (error) {
-      console.log('error', error)
-    }
-  }
-  async function GoogleAuthButtonClicked() {
-    try {
-      const res = await GoogleAuth()
-      if (res.user.accessToken) {
-        setIsLoggedIn(true)
-        setName(res.user.displayName)
-      }
-    } catch (error) {
-      console.log('error', error)
-    }
-  }
-
-  const SignUserOut = () => {
-    signOut(auth).then(() => {
-      setIsLoggedIn(false)
-
-      localStorage.removeItem('blogging')
-
-      navigate('/')
-    })
-  }
 
   const adminContent = () => {
     setShowAdminContent((prev) => !prev)
   }
 
-  useEffect(() => {
-    const loggedStorage = JSON.parse(localStorage.getItem('blogging'))
-    const theValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
-    if (loggedStorage === theValue) {
-      setIsLoggedIn(true)
-    }
-    if (isLoggedIn === true) {
-      window.localStorage.setItem('blogging', JSON.stringify(loggedValue))
-    }
-  }, [isLoggedIn])
+  // useEffect(() => {
+  //   const loggedStorage = JSON.parse(localStorage.getItem('blogging'))
+  //   const theValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
+  //   if (loggedStorage === theValue) {
+  //     setIsLoggedIn(true)
+  //   }
+  //   if (isLoggedIn === true) {
+  //     window.localStorage.setItem('blogging', JSON.stringify(loggedValue))
+  //   }
+  // }, [isLoggedIn])
 
-  useEffect(() => {
-    const getAllUsers = async () => {
-      try {
-        const { data } = await axios.get('http://localhost:2000/api/cba/getall')
-        if (data) {
-          setUsers(data)
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getAllUsers()
-  }, [userId])
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
-    try {
-      const res = await axios.post(`http://localhost:2000/api/cba/newuser`, {
-        emailToDb,
-      })
-      console.log(res)
-      if (res.status === 200) toast.error(res.data)
-      if (res.status === 201) toast.success('Užívateľ vytvorený')
-    } catch (error) {
-      console.log(error)
-    }
+    const { data } = await axios.post('http://localhost:2000/api/cba/login', {
+      email,
+      password,
+    })
+    console.log(data)
+    setCurrentUser(data)
+    navigate('/cba-zone')
   }
 
   return (
-    <div
-      className={
-        isLoggedIn
-          ? 'bg-dark text-white text-[30px] pt-2 relative'
-          : 'bg-dark text-white text-[30px] pt-2 relative'
-      }
-    >
+    <div className={'bg-dark text-white text-[30px] pt-2 relative'}>
       {/* <h1 className='text-center text-green-600'>Prihlásiť sa cez</h1> */}
-      {isLoggedIn && (
-        <button
-          className='absolute top-2 right-4 text-red-400'
-          onClick={SignUserOut}
-        >
-          Odhlásiť
-        </button>
-      )}
+
       <a className='absolute top-2 left-2 text-white' href='/'>
         Domov
       </a>
 
-      <div className={userId ? 'blur-md' : ''}>
-        <form onSubmit={handleSubmit} className='ml-4 mt-16'>
+      <div>
+        <form
+          onSubmit={handleLogin}
+          className='flex flex-col gap-2 ml-4 mt-16 w-[33%]'
+        >
           <input
             type='text'
-            value={emailToDb}
-            onChange={(e) => setEmailToDb(e.target.value)}
+            placeholder='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type='password'
+            placeholder='heslo'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button type='submit' className='ml-2'>
-            Pridať do databázy
+            Prihlásiť sa
           </button>
         </form>
-
-        <p className='mt-4 border-b'>Užívatelia</p>
-        {users &&
-          users.map((user) => (
-            <div key={user._id} className='m-2 border-b'>
-              <p
-                onClick={() => setUserId(user._id)}
-                className='text-green-500 cursor-pointer'
-              >
-                Na profil
-              </p>
-              <p>meno: {user.name}</p>
-              <p>email: {user.email}</p>
-              <p className='text-red-500'>
-                {user.isAdmin === true ? 'Admin' : ''}
-              </p>
-            </div>
-          ))}
       </div>
-
-      {userId && <Profile userId={userId} setUserId={setUserId} />}
 
       {/* <div className='flex flex-col lg:flex-row justify-center items-center text-center mt-12 lg:mt-4'>
         <button className='' onClick={FacebookAuthButtonClicked}>

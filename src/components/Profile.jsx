@@ -61,7 +61,7 @@ const Profile = ({ userId, setUserId }) => {
   }
 
   return (
-    <div className='absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2'>
+    <div className='absolute left-[50%] top-[50%] transform -translate-x-1/2 -translate-y-1/2'>
       <p
         onClick={() => setUserId('')}
         className='text-red-500 text-right cursor-pointer'

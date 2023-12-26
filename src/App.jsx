@@ -4,6 +4,9 @@ import RoomPage from './pages/Roompage'
 import Login from './pages/Login'
 import EditBlog from './pages/EditBlog'
 import Footer from './components/Footer'
+import CbaZone from './pages/CbaZone'
+import Admin from './pages/Admin'
+import Users from './pages/Users'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { StateContext } from './context/StateContext'
 import { firebaseConfig } from '../firebaseConfig'
@@ -23,6 +26,12 @@ function App() {
           <Route path='/login' element={<Login />} />
           {/* <Route path='/login/:id' element={<EditBlog />} /> */}
           <Route path='/edit/:id' element={<EditBlog />} />
+          <Route path='/cba-zone' element={<CbaZone />} />
+
+          <Route path='/admin' element={<Admin />}>
+            {' '}
+          </Route>
+          <Route path='/admin/users' element={<Users />}></Route>
         </Routes>
         {/* <Footer /> */}
       </StateContext>
