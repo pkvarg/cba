@@ -128,6 +128,11 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                   </DomLink>
                 </li>
                 <li>
+                  <DomLink to='/download' className='hover:text-red-600'>
+                    Letáky
+                  </DomLink>
+                </li>
+                <li>
                   <LanguageBar />
                 </li>
               </ul>

@@ -36,7 +36,7 @@ const Home = () => {
           </h1>
         ) : (
           <h1 className='text-center text-[75px] pt-[50%] lg:pt-[20%]'>
-            Church in Bratislava
+            The Church <br className='flex lg:hidden' /> in Bratislava
           </h1>
         )}
 
