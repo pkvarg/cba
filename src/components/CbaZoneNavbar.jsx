@@ -76,7 +76,9 @@ const CbaZoneNavbar = () => {
                 </li>
                 {isAdmin && (
                   <li>
-                    <DomLink to='/admin'>Admin</DomLink>
+                    <DomLink to='/admin' className='text-red-500'>
+                      Admin
+                    </DomLink>
                   </li>
                 )}
 
@@ -94,7 +96,7 @@ const CbaZoneNavbar = () => {
                   </DomLink>
                 </li>
                 <li
-                  className='text-red-400 cursor-pointer'
+                  className='text-red-500 cursor-pointer pt-[1px]'
                   onClick={handleLogout}
                 >
                   Odhlásiť sa

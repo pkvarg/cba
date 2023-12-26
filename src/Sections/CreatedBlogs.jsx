@@ -2,28 +2,28 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const CreatedBlogs = () => {
+const CreatedBlogs = ({ blogs }) => {
   const navigate = useNavigate()
-  const [blogs, setBlogs] = useState([])
+  // const [blogs, setBlogs] = useState([])
 
-  useEffect(() => {
-    const getBlogs = async () => {
-      try {
-        const { data } = await axios.get(
-          'https://api.pictusweb.com/api/cba/blogs'
-          // 'http://localhost:2000/api/cba/blogs'
-        )
+  // useEffect(() => {
+  //   const getBlogs = async () => {
+  //     try {
+  //       const { data } = await axios.get(
+  //         'https://api.pictusweb.com/api/cba/blogs'
+  //         // 'http://localhost:2000/api/cba/blogs'
+  //       )
 
-        if (data) {
-          setBlogs(data)
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
+  //       if (data) {
+  //         setBlogs(data)
+  //       }
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
 
-    getBlogs()
-  }, [])
+  //   getBlogs()
+  // }, [])
 
   const getDate = (dt) => {
     const date = new Date(dt)
@@ -36,15 +36,12 @@ const CreatedBlogs = () => {
 
   return (
     <div className='py-16'>
-      <h1 className='text-[45px] text-center text-yellow-400'>
-        Vytvorené blogy
-      </h1>
       <div>
         {blogs.map((blog) => (
           <div
             className='py-8 cursor-pointer'
             key={blog._id}
-            onClick={() => navigate(`/edit/${blog._id}`)}
+            onClick={() => navigate(`/admin/edit/${blog._id}`)}
           >
             <h1 className='text-green-300'>Nadpis: {blog.title}</h1>
             <h2>Kategória: {blog.category}</h2>
@@ -61,7 +58,7 @@ const CreatedBlogs = () => {
               )}
             </div>
             <p>Text: {blog.text}</p>
-            <p>Dátum: {getDate(blog.updatedAt)}</p>
+            {/* <p>Dátum: {getDate(blog.updatedAt)}</p> */}
           </div>
         ))}
       </div>

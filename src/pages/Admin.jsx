@@ -10,7 +10,7 @@ const Admin = () => {
     isAdmin && (
       <>
         <AdminNavbar />
-        <h1 className='text-center text-[35px] text-white'>Admin</h1>
+        <h1 className='text-center text-[35px] text-red-500'>Admin</h1>
       </>
     )
   )

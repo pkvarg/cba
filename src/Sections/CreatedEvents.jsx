@@ -23,9 +23,9 @@ const CreatedEvents = ({ blogs }) => {
               key={blog._id}
               onClick={() => navigate(`/admin/edit/${blog._id}`)}
             >
-              <h1 className='text-green-300'>Nadpis: {blog.title}</h1>
+              <h1 className='text-green-300'>{blog.title}</h1>
               <div className='flex flex-row gap-2'>
-                <p>Obrázok: </p>
+                {/* <p>Obrázok: </p> */}
                 {blog.media !== '' ? (
                   <img
                     className='w-[250px] lg:w-[100px]'
@@ -33,11 +33,12 @@ const CreatedEvents = ({ blogs }) => {
                     alt={blog.title}
                   />
                 ) : (
-                  <p>bez obrázku</p>
+                  ''
+                  // <p>bez obrázku</p>
                 )}
               </div>
-              <p>Text: {blog.text}</p>
-              <p>Dátum: {getDate(blog.updatedAt)}</p>
+              <p>{blog.text}</p>
+              {/* <p>Dátum: {getDate(blog.updatedAt)}</p> */}
             </div>
           ))
         ) : (
@@ -46,9 +47,9 @@ const CreatedEvents = ({ blogs }) => {
             key={blogs._id}
             onClick={() => navigate(`/admin/edit/${blogs._id}`)}
           >
-            <h1 className='text-green-300'>Nadpis: {blogs.title}</h1>
+            <h1 className='text-green-300'>{blogs.title}</h1>
             <div className='flex flex-row gap-2'>
-              <p>Obrázok: </p>
+              {/* <p>Obrázok: </p> */}
               {blogs.media !== '' ? (
                 <img
                   className='w-[250px] lg:w-[100px]'
@@ -56,11 +57,12 @@ const CreatedEvents = ({ blogs }) => {
                   alt={blogs.title}
                 />
               ) : (
-                <p>bez obrázku</p>
+                ''
+                // <p>bez obrázku</p>
               )}
             </div>
-            <p>Text: {blogs.text}</p>
-            <p>Dátum: {getDate(blogs.updatedAt)}</p>
+            <p>{blogs.text}</p>
+            {/* <p>Dátum: {getDate(blogs.updatedAt)}</p> */}
           </div>
         )}
       </div>

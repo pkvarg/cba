@@ -66,7 +66,7 @@ const AdminNavbar = () => {
                 navbar ? 'block' : 'hidden'
               }`}
             >
-              <ul className='justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-[30px] lg:text-[25px]'>
+              <ul className='justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-[30px] lg:text-[25px] text-red-500'>
                 <li>
                   <DomLink to='/'>Domov</DomLink>
                 </li>
@@ -88,7 +88,7 @@ const AdminNavbar = () => {
                 </li>
 
                 <li
-                  className='text-red-400 cursor-pointer'
+                  className='text-red-500 cursor-pointer pt-[1px]'
                   onClick={handleLogout}
                 >
                   Odhlásiť sa

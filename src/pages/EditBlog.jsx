@@ -10,6 +10,7 @@ import {
 import { app } from '../App'
 import CbaZoneBack from '../components/CbaZoneBack'
 import { useStateContext } from '../context/StateContext'
+import toast from 'react-hot-toast'
 
 const EditBlog = () => {
   const { currentUser } = useStateContext()
@@ -24,7 +25,6 @@ const EditBlog = () => {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [media, setMedia] = useState('')
-  const [success, setSuccess] = useState('')
 
   useEffect(() => {
     const getSingleBlog = async () => {
@@ -112,7 +112,7 @@ const EditBlog = () => {
       )
 
       if (res.status === 200) {
-        setSuccess('Príspevok úspešne upravený')
+        toast.success('Príspevok úspešne upravený')
         setTimeout(afterSuccess, 3000)
       }
     } catch (error) {
@@ -146,9 +146,7 @@ const EditBlog = () => {
     isAdmin && (
       <div className='bg-[#2e2236] text-white text-[30px] relative'>
         <CbaZoneBack destination={'/admin/events'} />
-        <h1 className='text-[45px] text-center text-green-400'>
-          Editovať blog
-        </h1>
+        <h1 className='text-[45px] text-center text-green-400'>Editovať</h1>
         {blog && (
           <div className='relative flex flex-col mx-2 lg:mx-[35%] mt-16'>
             <label className='text-[30px] py-1' htmlFor='text'>
@@ -169,9 +167,10 @@ const EditBlog = () => {
             >
               <option value='announcements'>Oznamy</option>
               <option value='events'>Podujatia</option>
-              <option value='slider'>Slider</option>
+              <option value='blogs'>Blogy</option>
             </select>
             <div className='flex relative bg-[#2e2236] mt-8'>
+              <p className='mr-4'>Obrázok</p>
               <button
                 className='w-[36px] h-[36px] border border-green-100 flex items-center justify-center cursor-pointer'
                 onClick={() => setOpen(!open)}
@@ -213,7 +212,6 @@ const EditBlog = () => {
             </button>
           </div>
         )}
-        <p className='text-[40px] text-center text-yellow-600'>{success}</p>
       </div>
     )
   )
