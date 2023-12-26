@@ -8,8 +8,13 @@ import {
   getDownloadURL,
 } from 'firebase/storage'
 import { app } from '../App'
+import CbaZoneBack from '../components/CbaZoneBack'
+import { useStateContext } from '../context/StateContext'
 
 const EditBlog = () => {
+  const { currentUser } = useStateContext()
+  const isAdmin = currentUser.isAdmin
+
   const { id } = useParams()
   const navigate = useNavigate()
   const [blog, setBlog] = useState()
@@ -80,7 +85,7 @@ const EditBlog = () => {
   }, [file])
 
   const afterSuccess = () => {
-    navigate('/login')
+    navigate(`/admin/${category}`)
   }
 
   const getDate = (dt) => {
@@ -127,7 +132,7 @@ const EditBlog = () => {
 
         if (res.status === 200) {
           setSuccess('Príspevok úspešne vymazaný')
-          navigate('/login')
+          navigate(`/admin/${category}`)
         }
       } catch (error) {
         setSuccess('Chyba pri vymazávaní')
@@ -138,77 +143,79 @@ const EditBlog = () => {
   }
 
   return (
-    <div className='bg-[#2e2236] text-white text-[30px] relative'>
-      <a className='absolute top-2 left-2 text-white' href='/login'>
-        Naspäť
-      </a>
-      <h1 className='text-[45px] text-center text-green-400'>Editovať blog</h1>
-      {blog && (
-        <div className='relative flex flex-col mx-2 lg:mx-[35%] mt-16'>
-          <label className='text-[30px] py-1' htmlFor='text'>
-            Nadpis
-          </label>
-          <input
-            type='text'
-            value={title}
-            placeholder='Nadpis'
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label htmlFor='text' value={category} className='text-[25px] mt-4'>
-            Kategória
-          </label>
-          <select
-            className='mt-2 text-[#2e2236]'
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value='announcements'>Oznamy</option>
-            <option value='events'>Podujatia</option>
-            <option value='slider'>Slider</option>
-          </select>
-          <div className='flex relative bg-[#2e2236] mt-8'>
-            <button
-              className='w-[36px] h-[36px] border border-green-100 flex items-center justify-center cursor-pointer'
-              onClick={() => setOpen(!open)}
+    isAdmin && (
+      <div className='bg-[#2e2236] text-white text-[30px] relative'>
+        <CbaZoneBack destination={'/admin/events'} />
+        <h1 className='text-[45px] text-center text-green-400'>
+          Editovať blog
+        </h1>
+        {blog && (
+          <div className='relative flex flex-col mx-2 lg:mx-[35%] mt-16'>
+            <label className='text-[30px] py-1' htmlFor='text'>
+              Nadpis
+            </label>
+            <input
+              type='text'
+              value={title}
+              placeholder='Nadpis'
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <label htmlFor='text' value={category} className='text-[25px] mt-4'>
+              Kategória
+            </label>
+            <select
+              className='mt-2 text-[#2e2236]'
+              onChange={(e) => setCategory(e.target.value)}
             >
-              <img src='/plus.png' alt='' width={16} height={16} />
-            </button>
-            {open && (
-              <div className='flex gap-[20px] z-999 w-[100%] absolute left-[50px]'>
-                <input
-                  type='file'
-                  id='image'
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: 'none' }}
-                />
-                <button className='border border-white w-[36px] h-[36px] 100 flex items-center justify-center cursor-pointer'>
-                  <label htmlFor='image'>
-                    <img src='/image.png' alt='' width={16} height={16} />
-                  </label>
-                </button>
-              </div>
+              <option value='announcements'>Oznamy</option>
+              <option value='events'>Podujatia</option>
+              <option value='slider'>Slider</option>
+            </select>
+            <div className='flex relative bg-[#2e2236] mt-8'>
+              <button
+                className='w-[36px] h-[36px] border border-green-100 flex items-center justify-center cursor-pointer'
+                onClick={() => setOpen(!open)}
+              >
+                <img src='/plus.png' alt='' width={16} height={16} />
+              </button>
+              {open && (
+                <div className='flex gap-[20px] z-999 w-[100%] absolute left-[50px]'>
+                  <input
+                    type='file'
+                    id='image'
+                    onChange={(e) => setFile(e.target.files[0])}
+                    style={{ display: 'none' }}
+                  />
+                  <button className='border border-white w-[36px] h-[36px] 100 flex items-center justify-center cursor-pointer'>
+                    <label htmlFor='image'>
+                      <img src='/image.png' alt='' width={16} height={16} />
+                    </label>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {media && (
+              <img className='my-4 w-[50%] lg:w-[25%]' src={media} alt='file' />
             )}
+
+            <textarea
+              className='text-[#2e2236] mt-4 pl-1'
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder='Text...'
+            />
+            <button className='mt-4 text-green-400' onClick={handleSubmit}>
+              Editovať
+            </button>
+            <button className='mt-4 text-red-400' onClick={handleDelete}>
+              Vymazať
+            </button>
           </div>
-
-          {media && (
-            <img className='my-4 w-[50%] lg:w-[25%]' src={media} alt='file' />
-          )}
-
-          <textarea
-            className='text-[#2e2236] mt-4 pl-1'
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder='Text...'
-          />
-          <button className='mt-4 text-green-400' onClick={handleSubmit}>
-            Editovať
-          </button>
-          <button className='mt-4 text-red-400' onClick={handleDelete}>
-            Vymazať
-          </button>
-        </div>
-      )}
-      <p className='text-[40px] text-center text-yellow-600'>{success}</p>
-    </div>
+        )}
+        <p className='text-[40px] text-center text-yellow-600'>{success}</p>
+      </div>
+    )
   )
 }
 

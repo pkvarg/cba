@@ -7,15 +7,15 @@ import {
 } from 'firebase/storage'
 import { app } from '../App'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
-const CreateBlog = () => {
+const CreateBlog = ({ category, setKey }) => {
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
   const [text, setText] = useState('')
   const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('')
+  //const [category, setCategory] = useState('')
   const [media, setMedia] = useState('')
-  const [success, setSuccess] = useState('')
 
   const [data, setData] = useState({})
 
@@ -54,10 +54,6 @@ const CreateBlog = () => {
     file && upload()
   }, [file])
 
-  const reloadOnSuccess = () => {
-    window.location.reload()
-  }
-
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
@@ -71,11 +67,12 @@ const CreateBlog = () => {
         }
       )
 
-      console.log('res', res.status)
-
       if (res.status === 201) {
-        setSuccess('Príspevok úspešne vytvorený')
-        setTimeout(reloadOnSuccess, 3000)
+        toast.success('Príspevok úspešne vytvorený')
+        setKey((prev) => prev + 1)
+        setTitle('')
+        setFile('')
+        setText('')
       }
     } catch (error) {
       console.log(error)
@@ -90,9 +87,10 @@ const CreateBlog = () => {
       <input
         type='text'
         placeholder='Nadpis'
+        value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <label htmlFor='text' className='text-[25px] mt-4'>
+      {/* <label htmlFor='text' className='text-[25px] mt-4'>
         Kategória
       </label>
       <select
@@ -102,7 +100,7 @@ const CreateBlog = () => {
         <option value='announcements'>Oznamy</option>
         <option value='events'>Podujatia</option>
         <option value='slider'>Slider</option>
-      </select>
+      </select> */}
       <div className='flex relative bg-[#2e2236] mt-8'>
         <button
           className='w-[36px] h-[36px] border border-green-100 flex items-center justify-center cursor-pointer'
@@ -141,7 +139,6 @@ const CreateBlog = () => {
       <button className='mt-4 text-green-400' onClick={handleSubmit}>
         Publikovať
       </button>
-      {success && <p className='text-center'>{success}</p>}
     </div>
   )
 }

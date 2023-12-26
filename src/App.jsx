@@ -31,7 +31,6 @@ function App() {
           <Route path='/room/:roomId' element={<RoomPage />} />
           <Route path='/login' element={<Login />} />
           {/* <Route path='/login/:id' element={<EditBlog />} /> */}
-          <Route path='/edit/:id' element={<EditBlog />} />
           <Route path='/cba-zone' element={<CbaZone />} />
           <Route path='/cba-zone/my-profile/:id' element={<MyProfile />} />
           <Route path='/cba-zone/events' element={<Events />} />
@@ -42,6 +41,8 @@ function App() {
           <Route path='/admin/events' element={<AdminEvents />} />
           <Route path='/admin/blogs' element={<AdminBlogs />} />
           <Route path='/admin/announcements' element={<AdminAnnouncements />} />
+          <Route path='/admin/edit/:id' element={<EditBlog />} />
+
         </Routes>
         {/* <Footer /> */}
       </StateContext>
