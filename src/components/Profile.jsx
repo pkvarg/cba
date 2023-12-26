@@ -1,11 +1,17 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import { useStateContext } from '../context/StateContext'
 
 const Profile = ({ userId, setUserId }) => {
+  const { currentUser, setCurrentUser } = useStateContext()
+  const currentUserisAdmin = currentUser.isAdmin
+
   const [user, setUser] = useState()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [repeatPassword, setRepeatPassword] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
@@ -24,12 +30,18 @@ const Profile = ({ userId, setUserId }) => {
 
   const editUser = async (e) => {
     e.preventDefault()
+    if (newPassword !== repeatPassword) {
+      return toast.error('Nové heslo a opakované heslo sa nezhodujú')
+    }
+    //toast.success('OK')
     try {
       const res = await axios.put(
         `http://localhost:2000/api/cba/edituser/${userId}`,
         {
           name,
           email,
+
+          newPassword,
           isAdmin,
         }
       )
@@ -83,19 +95,42 @@ const Profile = ({ userId, setUserId }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label className='mt-1'>Admin?</label>
 
-        <input
-          type='text'
-          value={isAdmin}
-          onChange={(e) => setIsAdmin(e.target.value)}
-        />
+        <>
+          <label className='mt-1'>Nové heslo</label>
+
+          <input
+            type='password'
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+
+          <label className='mt-1'>Opakovať nové heslo</label>
+          <input
+            type='password'
+            value={repeatPassword}
+            onChange={(e) => setRepeatPassword(e.target.value)}
+          />
+        </>
+
+        {currentUserisAdmin && (
+          <>
+            <label className='mt-1'>Admin?</label>
+            <input
+              type='text'
+              value={isAdmin}
+              onChange={(e) => setIsAdmin(e.target.value)}
+            />
+          </>
+        )}
         <button type='submit' className='text-green-500 mt-4'>
-          Edit
+          Upraviť
         </button>
-        <button onClick={deleteUser} className='text-red-700'>
-          DELETE
-        </button>
+        {currentUserisAdmin && (
+          <button onClick={deleteUser} className='text-red-700'>
+            Vymazať
+          </button>
+        )}
       </form>
     </div>
   )

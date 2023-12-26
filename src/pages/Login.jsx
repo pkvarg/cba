@@ -41,6 +41,8 @@ const Login = () => {
       password,
     })
     console.log(data)
+    if (data === 'Neplatný email alebo heslo')
+      return toast.error('Neplatný email alebo heslo')
     setCurrentUser(data)
     navigate('/cba-zone')
   }
@@ -70,7 +72,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type='submit' className='ml-2'>
+          <button type='submit' className='ml-2 text-green-500'>
             Prihlásiť sa
           </button>
         </form>

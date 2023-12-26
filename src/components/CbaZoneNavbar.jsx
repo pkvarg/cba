@@ -7,6 +7,9 @@ const CbaZoneNavbar = () => {
   const [navbar, setNavbar] = useState(false)
   const { currentUser, setCurrentUser } = useStateContext()
   const isAdmin = currentUser.isAdmin
+  const id = currentUser._id
+
+  console.log(id)
 
   const navigate = useNavigate()
 
@@ -78,6 +81,10 @@ const CbaZoneNavbar = () => {
                     <a href='/admin'>Admin</a>
                   </li>
                 )}
+
+                <li>
+                  <a href={`/cba-zone/my-profile/${id}`}>Môj profil</a>
+                </li>
                 <li
                   className='text-red-400 cursor-pointer'
                   onClick={handleLogout}
