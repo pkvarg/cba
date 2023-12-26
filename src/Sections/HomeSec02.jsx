@@ -4,7 +4,7 @@ const HomeSec02 = () => {
   const [showMore, setShowMore] = useState(false)
 
   return (
-    <div className='bg-dark text-white' id='faith'>
+    <div className='bg-[#2e2236] text-white' id='faith'>
       <h1 className='text-center text-[40px] font-medium pt-16 uppercase'>
         Čomu veríme
       </h1>
@@ -28,7 +28,7 @@ const HomeSec02 = () => {
           <button
             className={
               !showMore
-                ? 'mt-12 mb-4 rounded-2xl border border-l-emerald-100 hover:bg-white hover:text-dark hover:border-dark hover:border-2 w-[75px]'
+                ? 'mt-12 mb-4 rounded-2xl border border-l-emerald-100 hover:bg-white hover:text-[#2e2236] hover:border-[#2e2236] hover:border-2 w-[75px]'
                 : 'hidden'
             }
             onClick={() => setShowMore((prev) => !prev)}
@@ -76,7 +76,7 @@ const HomeSec02 = () => {
           <button
             className={
               showMore
-                ? 'mt-12 mb-4 rounded-2xl border border-l-emerald-100 hover:bg-white hover:text-dark hover:border-dark hover:border-2 w-[75px]'
+                ? 'mt-12 mb-4 rounded-2xl border border-l-emerald-100 hover:bg-white hover:text-[#2e2236] hover:border-[#2e2236] hover:border-2 w-[75px]'
                 : 'hidden'
             }
             onClick={() => setShowMore((prev) => !prev)}

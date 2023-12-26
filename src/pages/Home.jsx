@@ -30,9 +30,16 @@ const Home = () => {
         setShowContactForm={setShowContactForm}
       />
       <div className='hero h-[90vh] lg:h-[110vh] text-[25px] text-white -mt-[25%] lg:-mt-[8%]'>
-        <h1 className='text-center text-[75px] pt-[50%] lg:pt-[20%]'>
-          {content.headerTitle}
-        </h1>
+        {language === 'slovak' ? (
+          <h1 className='text-center text-[75px] leading-[75px] pt-[50%] lg:pt-[20%]'>
+            Cirkev <br className='flex lg:hidden' /> v Bratislave
+          </h1>
+        ) : (
+          <h1 className='text-center text-[75px] pt-[50%] lg:pt-[20%]'>
+            Church in Bratislava
+          </h1>
+        )}
+
         <p className='text-center text-[30px] mx-2'>
           "Ja som vínny kmeň a vy ste ratolesti. <br /> Kto zostáva vo mne a ja
           v ňom, ten prináša veľa ovocia, <br /> pretože bezo mňa nič nemôžete

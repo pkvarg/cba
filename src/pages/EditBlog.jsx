@@ -138,7 +138,7 @@ const EditBlog = () => {
   }
 
   return (
-    <div className='bg-dark text-white text-[30px] relative'>
+    <div className='bg-[#2e2236] text-white text-[30px] relative'>
       <a className='absolute top-2 left-2 text-white' href='/login'>
         Naspäť
       </a>
@@ -158,14 +158,14 @@ const EditBlog = () => {
             Kategória
           </label>
           <select
-            className='mt-2 text-dark'
+            className='mt-2 text-[#2e2236]'
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value='announcements'>Oznamy</option>
             <option value='events'>Podujatia</option>
             <option value='slider'>Slider</option>
           </select>
-          <div className='flex relative bg-dark mt-8'>
+          <div className='flex relative bg-[#2e2236] mt-8'>
             <button
               className='w-[36px] h-[36px] border border-green-100 flex items-center justify-center cursor-pointer'
               onClick={() => setOpen(!open)}
@@ -194,7 +194,7 @@ const EditBlog = () => {
           )}
 
           <textarea
-            className='text-dark mt-4 pl-1'
+            className='text-[#2e2236] mt-4 pl-1'
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder='Text...'

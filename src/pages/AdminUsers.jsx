@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useStateContext } from '../context/StateContext'
 import Profile from '../components/Profile'
 import axios from 'axios'
+import CbaZoneBack from '../components/CbaZoneBack'
 
-const Users = () => {
+const AdminUsers = () => {
   const { currentUser } = useStateContext()
 
   const isAdmin = currentUser.isAdmin
@@ -44,7 +45,8 @@ const Users = () => {
   return (
     isAdmin && (
       <div className='text-white text-[25px]'>
-        <a href='/admin'>Naspäť</a>
+        <CbaZoneBack destination={'/admin'} />
+
         <div className='flex text-white text-[25px] ml-2'>
           <div className={userId ? 'blur-md' : ''}>
             <p className='mt-4 ml-2 border-b'>Užívatelia</p>
@@ -88,4 +90,4 @@ const Users = () => {
   )
 }
 
-export default Users
+export default AdminUsers

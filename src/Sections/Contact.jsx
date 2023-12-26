@@ -83,7 +83,7 @@ const Contact = ({ showContactForm, setShowContactForm, content }) => {
   return (
     showContactForm && (
       <>
-        <div className='bg-dark pt-16 pb-10 text-[25px] text-white'>
+        <div className='bg-[#2e2236] pt-16 pb-10 text-[25px] text-white'>
           <h1
             id='contact'
             className='text-[35px] lg:text-[35px] text-white text-center lg:pt-0 py-4'
@@ -145,7 +145,7 @@ const Contact = ({ showContactForm, setShowContactForm, content }) => {
                       {content.contactMessage} <sup>*</sup>
                     </label>
                     <textarea
-                      className='form-control rounded-xl text-dark  pl-[10px]'
+                      className='form-control rounded-xl text-[#2e2236]  pl-[10px]'
                       rows='5'
                       name='message'
                       value={mailMessage}
@@ -196,7 +196,7 @@ const Contact = ({ showContactForm, setShowContactForm, content }) => {
                     onChange={(e) => setPasswordGroupTwo(e.target.value)}
                   />
                   <button
-                    className='text-[25px] bg-violet mt-10 pt-[5px] rounded-xl border border-white hover:text-dark hover:bg-white'
+                    className='text-[25px] bg-violet mt-10 pt-[5px] rounded-xl border border-white hover:text-[#2e2236] hover:bg-white'
                     type='submit'
                     value='Send'
                   >

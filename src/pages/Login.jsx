@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-import Profile from '../components/Profile'
+import CbaZoneBack from '../components/CbaZoneBack'
 
 const Login = () => {
   // login
@@ -48,17 +48,15 @@ const Login = () => {
   }
 
   return (
-    <div className={'bg-dark text-white text-[30px] pt-2 relative'}>
+    <div className={'bg-[#2e2236] text-white text-[30px] pt-2 relative'}>
       {/* <h1 className='text-center text-green-600'>Prihlásiť sa cez</h1> */}
 
-      <a className='absolute top-2 left-2 text-white' href='/'>
-        Domov
-      </a>
+      <CbaZoneBack destination={'/'} />
 
-      <div>
+      <div className='mx-4 lg:mx-0'>
         <form
           onSubmit={handleLogin}
-          className='flex flex-col gap-2 ml-4 mt-16 w-[33%]'
+          className='flex flex-col gap-2 ml-0 lg:ml-4 mt-16 w-[100%] lg:w-[33%]'
         >
           <input
             type='text'

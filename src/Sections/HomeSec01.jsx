@@ -2,7 +2,7 @@ import React from 'react'
 
 const HomeSec01 = () => {
   return (
-    <div className='bg-lightbg text-[40px] py-16 text-center' id='about'>
+    <div className='bg-[#f9f9f9] text-[40px] py-16 text-center' id='about'>
       <div className='uppercase mx-2'>
         <h1 className='font-black'>Milujeme Krista. Milujeme Jeho ľud.</h1>
         <h2 className='font-bold'>Budujeme Jeho cirkev.</h2>

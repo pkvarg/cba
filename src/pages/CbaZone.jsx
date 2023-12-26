@@ -13,8 +13,12 @@ const CbaZone = () => {
     <>
       <CbaZoneNavbar />
 
-      <div className='text-white flex  text-[20px]'>
+      <div className='text-white flex flex-col justify-center items-center gap-8 mx-4 lg:mx-16 text-[30px] lg:text-[25px]'>
         <Meetings />
+        <p className='text-[35px] text-green-500'>Úvody 2024</p>
+        <img src='/rozpis2024.webp' alt='schedule' className='my-2' />
+        <p className='text-[35px] text-green-500'>Varenie 2024</p>
+        <p>...</p>
       </div>
     </>
   )

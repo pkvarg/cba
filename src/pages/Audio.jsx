@@ -11,7 +11,7 @@ const Audio = () => {
   }
 
   return (
-    <div className='h-[95vh] bg-dark text-white text-[35px] relative'>
+    <div className='h-[95vh] bg-[#2e2236] text-white text-[35px] relative'>
       <a className='absolute top-2 left-2 text-white' href='/'>
         Home
       </a>

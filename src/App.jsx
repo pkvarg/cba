@@ -6,8 +6,13 @@ import EditBlog from './pages/EditBlog'
 import Footer from './components/Footer'
 import CbaZone from './pages/CbaZone'
 import Admin from './pages/Admin'
-import Users from './pages/Users'
+import Users from './pages/AdminUsers'
+import Events from './pages/Events'
 import MyProfile from './pages/MyProfile'
+import Burdens from './pages/Burdens'
+import AdminEvents from './pages/AdminEvents'
+import AdminBlogs from './pages/AdminBlogs'
+import AdminAnnouncements from './pages/AdminAnnouncements'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { StateContext } from './context/StateContext'
 import { firebaseConfig } from '../firebaseConfig'
@@ -29,11 +34,14 @@ function App() {
           <Route path='/edit/:id' element={<EditBlog />} />
           <Route path='/cba-zone' element={<CbaZone />} />
           <Route path='/cba-zone/my-profile/:id' element={<MyProfile />} />
+          <Route path='/cba-zone/events' element={<Events />} />
+          <Route path='/cba-zone/burdens' element={<Burdens />} />
 
-          <Route path='/admin' element={<Admin />}>
-            {' '}
-          </Route>
-          <Route path='/admin/users' element={<Users />}></Route>
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/admin/users' element={<Users />} />
+          <Route path='/admin/events' element={<AdminEvents />} />
+          <Route path='/admin/blogs' element={<AdminBlogs />} />
+          <Route path='/admin/announcements' element={<AdminAnnouncements />} />
         </Routes>
         {/* <Footer /> */}
       </StateContext>

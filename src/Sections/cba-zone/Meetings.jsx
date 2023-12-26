@@ -2,8 +2,10 @@ import React from 'react'
 
 const Meetings = () => {
   return (
-    <div className='ml-2 mt-8'>
-      <h1 className='text-[30px] text-green-500'>Stretnutia</h1>
+    <div className='ml-2 mt-8 '>
+      <h1 className='text-center text-[35px] my-8 text-green-500'>
+        Stretnutia
+      </h1>
       <p>
         Pondelok 18:00
         <a

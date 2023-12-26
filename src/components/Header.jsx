@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-scroll'
+import { Link as DomLink } from 'react-router-dom'
 import LanguageBar from './LanguageBar'
 
 const Header = ({ content, showContactForm, setShowContactForm }) => {
@@ -67,7 +68,7 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     smooth={true}
                     offset={0}
                     duration={500}
-                    className='hover:text-dark-red'
+                    className='hover:text-red-600 cursor-pointer'
                   >
                     O nás
                   </Link>
@@ -79,7 +80,7 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     smooth={true}
                     offset={0}
                     duration={500}
-                    className='hover:text-dark-red'
+                    className='hover:text-red-600 cursor-pointer'
                   >
                     Vyznanie viery
                   </Link>
@@ -92,7 +93,7 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     smooth={true}
                     offset={0}
                     duration={500}
-                    className='hover:text-dark-red'
+                    className='hover:text-red-600 cursor-pointer'
                   >
                     Podujatia
                   </Link>
@@ -110,17 +111,21 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     smooth={true}
                     offset={0}
                     duration={500}
-                    className='hover:text-dark-red'
+                    className='hover:text-red-600 cursor-pointer'
                     onClick={() => setShowContactForm(true)}
                   >
                     Kontakt
                   </Link>
                 </li>
                 <li>
-                  <a href='/login'>Login</a>
+                  <DomLink to='/login' className='hover:text-red-600'>
+                    Login
+                  </DomLink>
                 </li>
                 <li>
-                  <a href='/audio'>Audio</a>
+                  <DomLink to='/audio' className='hover:text-red-600'>
+                    Audio mp3 googleDrive
+                  </DomLink>
                 </li>
                 <li>
                   <LanguageBar />

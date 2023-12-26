@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Profile from '../components/Profile'
 import { useStateContext } from '../context/StateContext'
+import CbaZoneBack from '../components/CbaZoneBack'
 
 const MyProfile = () => {
   const params = useParams()
@@ -15,7 +16,8 @@ const MyProfile = () => {
 
   return (
     <div className='text-white text-[25px]'>
-      <a href='/cba-zone'>Naspäť</a>
+      <CbaZoneBack destination={'/cba-zone'} />
+
       {userId && (
         <div>
           <div>

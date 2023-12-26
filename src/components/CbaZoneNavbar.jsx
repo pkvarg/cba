@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { Link as DomLink } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
 
 const CbaZoneNavbar = () => {
@@ -8,8 +8,6 @@ const CbaZoneNavbar = () => {
   const { currentUser, setCurrentUser } = useStateContext()
   const isAdmin = currentUser.isAdmin
   const id = currentUser._id
-
-  console.log(id)
 
   const navigate = useNavigate()
 
@@ -20,14 +18,14 @@ const CbaZoneNavbar = () => {
   }
 
   return (
-    <header className='herom'>
+    <header>
       <nav className='w-full text-white nav-font'>
         <div className='justify-between px-4 mx-auto md:items-center md:flex md:px-8'>
           <div className='mb-0 lg:mb-2'>
             <div className='flex items-center justify-between md:block'>
-              <a className='text-[25px] text-green-500' href='/'>
+              <p className='text-[25px] text-green-500'>
                 Ahoj {currentUser.name}
-              </a>
+              </p>
               <div className='md:hidden'>
                 <button
                   className='p-2 text-white rounded-md outline-none focus:border-gray-400 focus:border'
@@ -74,16 +72,26 @@ const CbaZoneNavbar = () => {
             >
               <ul className='justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-[30px] lg:text-[25px]'>
                 <li>
-                  <a href='/'>Domov</a>
+                  <DomLink to='/'>Domov</DomLink>
                 </li>
                 {isAdmin && (
                   <li>
-                    <a href='/admin'>Admin</a>
+                    <DomLink to='/admin'>Admin</DomLink>
                   </li>
                 )}
 
                 <li>
-                  <a href={`/cba-zone/my-profile/${id}`}>Môj profil</a>
+                  <DomLink to='/cba-zone/events'>Podujatia</DomLink>
+                </li>
+
+                <li>
+                  <DomLink to='/cba-zone/burdens'>Bremená</DomLink>
+                </li>
+
+                <li>
+                  <DomLink to={`/cba-zone/my-profile/${id}`}>
+                    Môj profil
+                  </DomLink>
                 </li>
                 <li
                   className='text-red-400 cursor-pointer'

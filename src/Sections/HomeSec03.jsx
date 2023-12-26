@@ -13,7 +13,7 @@ const HomeSec03 = () => {
         <p className='mt-8'>10.-12. novembra 2023</p>
         <p>Sofia, Bulharsko</p>
         <a
-          className='my-4 border border-dark rounded-2xl px-4 pt-1 hover:bg-dark hover:text-white'
+          className='my-4 border border-[#2e2236] rounded-2xl px-4 pt-1 hover:bg-[#2e2236] hover:text-white'
           href='https://churchesceeb.org/home-sk/'
           target='_blank'
         >
