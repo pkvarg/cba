@@ -78,8 +78,6 @@ const Contact = ({ showContactForm, setShowContactForm, content }) => {
     }
   }
 
-  console.log(showContactForm)
-
   return (
     showContactForm && (
       <>

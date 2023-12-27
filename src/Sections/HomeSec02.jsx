@@ -1,27 +1,20 @@
 import React, { useState } from 'react'
 
-const HomeSec02 = () => {
+const HomeSec02 = ({ content }) => {
   const [showMore, setShowMore] = useState(false)
 
   return (
     <div className='bg-[#2e2236] text-white' id='faith'>
       <h1 className='text-center text-[40px] font-medium pt-16 uppercase'>
-        Čomu veríme
+        {content.home02title}
       </h1>
       <div className='text-[30px] font-light mx-[5%] text-justify py-16 flex flex-col gap-4 lg:gap-2'>
+        <p>{content.home02p1}</p>
         <p>
-          Zachovávame všeobecnú vieru, ktorá je zdieľaná všetkými veriacimi
-          kresťanmi, obsah ktorej bol ustanovený raz a navždy v Starom a Novom
-          Zákone.
+          <p>{content.home02p2}</p>
         </p>
         <p>
-          Konkrétne je táto všeobecná, viera zostavená z nasledujúcich faktov, v
-          ktoré veríme, v súvislosti s Bibliou, Bohom, Kristom, spásou a
-          večnosťou: Považujeme Bibliu za úplné a jediné božské zjavenie.
-        </p>
-        <p>
-          Pevne veríme, že Boh je večne jeden a tiež večne Otcom, Synom a Duchom
-          – traja, ktorí sú odlišní avšak neoddeliteľní.
+          <p>{content.home02p3}</p>
         </p>
 
         <div className='flex justify-center'>
@@ -33,41 +26,23 @@ const HomeSec02 = () => {
             }
             onClick={() => setShowMore((prev) => !prev)}
           >
-            {showMore ? 'menej' : 'viac'}
+            {showMore ? content.home02b2 : content.home02b1}
           </button>
         </div>
 
         {showMore && (
           <>
             <p>
-              Veríme, že Kristus je úplný Boh i dokonalý človek. Bez opustenia
-              Svojho božstva bol počatý v lone ľudskej panny, žil naozajstným
-              ľudským životom na zemi a zomrel zástupnú a všetko zahŕňajúcu smrť
-              na kríži. Po troch dňoch vstal telesne z mŕtvych a vystúpil do
-              nebies. Teraz je v sláve, plne Boh a stále plne človek. Očakávame
-              Jeho blízky príchod s Božím kráľovstvom, skrze ktoré bude vládnuť
-              nad zemou v miléniu a vo večnosti.
+              <p>{content.home02p4}</p>
             </p>
             <p>
-              Vyznávame, že tretí z Trojice, Duch, je takisto Bohom. Všetko, čo
-              Otec má a je, je vyjadrené Synom a všetko, čo Syn má a je, je
-              uskutočnené ako Duch.
+              <p>{content.home02p5}</p>
             </p>
             <p>
-              Ďalej veríme, že ľudstvo potrebuje Božiu spásu. Keďže sme boli
-              úplne neschopní naplniť ťažké požiadavky Božej spravodlivosti,
-              svätosti a slávy, Kristus všetky požiadavky naplnil Svojou smrťou
-              na kríži. Kvôli Kristovej smrti nám Boh odpustil naše hriechy,
-              zmieril nás so sebou samým a ospravedlnil nás tým, že Krista
-              učinil našou spravodlivosťou. Na základe Kristovho vykúpenia Boh
-              obrodzuje vykúpených Svojím Duchom pre dovŕšenie svoje spásy, aby
-              sa mohli stať Jeho deťmi.
+              <p>{content.home02p6}</p>
             </p>
             <p>
-              Majúc teraz Boží život a prirodzenosť, veriaci vychutnávajú
-              každodennú spásu v Jeho Tele v tomto veku a večnú spásu v
-              prichádzajúcom veku a vo večnosti. Vo večnosti budeme prebývať s
-              Bohom v Novom Jeruzaleme, dovŕšení Božej spásy Jeho vyvolených.
+              <p>{content.home02p7}</p>
             </p>
           </>
         )}
@@ -81,7 +56,7 @@ const HomeSec02 = () => {
             }
             onClick={() => setShowMore((prev) => !prev)}
           >
-            {showMore ? 'menej' : 'viac'}
+            {showMore ? content.home02b2 : content.home02b1}
           </button>
         </div>
       </div>

@@ -40,17 +40,26 @@ const Home = () => {
           </h1>
         )}
 
-        <p className='text-center text-[30px] mx-2'>
-          "Ja som vínny kmeň a vy ste ratolesti. <br /> Kto zostáva vo mne a ja
-          v ňom, ten prináša veľa ovocia, <br /> pretože bezo mňa nič nemôžete
-          činiť." <br />
-          <span className='text-[18px] text-center'> Ján 15:5</span>
-        </p>
+        {language === 'slovak' ? (
+          <p className='text-center text-[30px] mx-2'>
+            "Ja som vínny kmeň a vy ste ratolesti. <br /> Kto zostáva vo mne a
+            ja v ňom, ten prináša veľa ovocia, <br /> pretože bezo mňa nič
+            nemôžete činiť." <br />
+            <span className='text-[18px] text-center'> Ján 15:5</span>
+          </p>
+        ) : (
+          <p className='text-center text-[30px] mx-2'>
+            "I am the vine; you are the branches. <br /> He who abides in Me and
+            I in him, he bears amuch fruit; <br /> for apart from Me you can do
+            nothing." <br />
+            <span className='text-[18px] text-center'> John 15:5</span>
+          </p>
+        )}
       </div>
-      <HomeSec01 />
-      <HomeSec02 />
-      <HomeSec03 />
-      <BlogByCategory />
+      <HomeSec01 content={content} />
+      <HomeSec02 content={content} />
+      <HomeSec03 content={content} language={language} />
+      {/* <BlogByCategory /> */}
 
       <Contact
         showContactForm={showContactForm}

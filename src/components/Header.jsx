@@ -70,7 +70,7 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     duration={500}
                     className='hover:text-red-600 cursor-pointer'
                   >
-                    O nás
+                    {content.headerAbout}
                   </Link>
                 </li>
                 <li>
@@ -82,7 +82,7 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     duration={500}
                     className='hover:text-red-600 cursor-pointer'
                   >
-                    Vyznanie viery
+                    {content.headerConfession}
                   </Link>
                   {/* <a href='/'>Vyznanie viery</a> */}
                 </li>
@@ -95,15 +95,16 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     duration={500}
                     className='hover:text-red-600 cursor-pointer'
                   >
-                    Podujatia
+                    {content.headerEvents}
                   </Link>
                 </li>
-                {/* <li>
-                  <a href='/'>Linky</a>
-                </li>
+
                 <li>
-                  <a href='/'>Eshop</a>
-                </li> */}
+                  <DomLink to='/gallery' className='hover:text-red-600'>
+                    {content.headerGallery}
+                  </DomLink>
+                </li>
+
                 <li>
                   <Link
                     to='contact'
@@ -114,22 +115,23 @@ const Header = ({ content, showContactForm, setShowContactForm }) => {
                     className='hover:text-red-600 cursor-pointer'
                     onClick={() => setShowContactForm(true)}
                   >
-                    Kontakt
+                    {content.headerContact}
                   </Link>
                 </li>
-                <li>
-                  <DomLink to='/login' className='hover:text-red-600'>
-                    Login
-                  </DomLink>
-                </li>
+
                 <li>
                   <DomLink to='/audio' className='hover:text-red-600'>
-                    Audio mp3 googleDrive
+                    Audio
                   </DomLink>
                 </li>
                 <li>
                   <DomLink to='/download' className='hover:text-red-600'>
-                    Letáky
+                    {content.headerDownload}
+                  </DomLink>
+                </li>
+                <li>
+                  <DomLink to='/login' className='hover:text-red-600'>
+                    Login
                   </DomLink>
                 </li>
                 <li>

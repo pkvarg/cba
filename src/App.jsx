@@ -8,6 +8,8 @@ import CbaZone from './pages/CbaZone'
 import Admin from './pages/Admin'
 import Users from './pages/AdminUsers'
 import Events from './pages/Events'
+import Gallery from './pages/Gallery'
+import Download from './pages/Download'
 import MyProfile from './pages/MyProfile'
 import Burdens from './pages/Burdens'
 import AdminEvents from './pages/AdminEvents'
@@ -30,7 +32,8 @@ function App() {
           <Route path='/audio' element={<Audio />} />
           <Route path='/room/:roomId' element={<RoomPage />} />
           <Route path='/login' element={<Login />} />
-          {/* <Route path='/login/:id' element={<EditBlog />} /> */}
+          <Route path='/gallery' element={<Gallery />} />
+          <Route path='/download' element={<Download />} />
           <Route path='/cba-zone' element={<CbaZone />} />
           <Route path='/cba-zone/my-profile/:id' element={<MyProfile />} />
           <Route path='/cba-zone/events' element={<Events />} />
@@ -42,7 +45,6 @@ function App() {
           <Route path='/admin/blogs' element={<AdminBlogs />} />
           <Route path='/admin/announcements' element={<AdminAnnouncements />} />
           <Route path='/admin/edit/:id' element={<EditBlog />} />
-
         </Routes>
         {/* <Footer /> */}
       </StateContext>

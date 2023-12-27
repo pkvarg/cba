@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Audio = () => {
+const Audio = ({ content }) => {
   const [roomCode, setRoomcode] = useState()
   const navigate = useNavigate()
 
@@ -12,9 +12,12 @@ const Audio = () => {
 
   return (
     <div className='h-[95vh] bg-[#2e2236] text-white text-[35px] relative'>
-      <a className='absolute top-2 left-2 text-white' href='/'>
+      <p
+        onClick={() => navigate('/')}
+        className='absolute top-2 left-2 text-white cursor-pointer'
+      >
         Home
-      </a>
+      </p>
       <h1 className='text-center text-green-700 py-16'>
         Audio for Translation of the Meetings
       </h1>
