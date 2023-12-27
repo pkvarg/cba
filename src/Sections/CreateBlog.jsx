@@ -14,7 +14,11 @@ const CreateBlog = ({ category, setKey }) => {
   const [file, setFile] = useState(null)
   const [text, setText] = useState('')
   const [title, setTitle] = useState('')
-  //const [category, setCategory] = useState('')
+  const [upcoming, setUpcoming] = useState(false)
+  const [english, setEnglish] = useState(false)
+  const currentPathname = window.location.pathname
+  const isEvent = currentPathname.includes('events')
+
   const [media, setMedia] = useState('')
 
   const [data, setData] = useState({})
@@ -57,13 +61,15 @@ const CreateBlog = ({ category, setKey }) => {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        'https://api.pictusweb.com/api/cba/blog',
-        // 'http://localhost:2000/api/cba/blog',
+        // 'https://api.pictusweb.com/api/cba/blog',
+        'http://localhost:2000/api/cba/blog',
         {
           title,
           category,
           media,
           text,
+          upcoming,
+          english,
         }
       )
 
@@ -90,6 +96,30 @@ const CreateBlog = ({ category, setKey }) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
+      {isEvent && (
+        <>
+          <p
+            onClick={() => setUpcoming((prev) => !prev)}
+            className={
+              upcoming
+                ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
+                : 'text-red-500 text-[25px] mt-4 cursor-pointer'
+            }
+          >
+            Nadchádzajúce podujatie? {upcoming ? 'Áno' : 'Nie'}
+          </p>
+          <p
+            onClick={() => setEnglish((prev) => !prev)}
+            className={
+              english
+                ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
+                : 'text-red-500 text-[25px] mt-4 cursor-pointer'
+            }
+          >
+            Anglický oznam? {english ? 'Áno' : 'Nie'}
+          </p>
+        </>
+      )}
       {/* <label htmlFor='text' className='text-[25px] mt-4'>
         Kategória
       </label>

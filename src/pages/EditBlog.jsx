@@ -25,13 +25,16 @@ const EditBlog = () => {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [media, setMedia] = useState('')
+  const [upcoming, setUpcoming] = useState(false)
+  const currentPathname = window.location.pathname
+  const isEvent = currentPathname.includes('events')
 
   useEffect(() => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
-          `https://api.pictusweb.com/api/cba/blogs/${id}`
-          // `http://localhost:2000/api/cba/blogs/${id}`
+          // `https://api.pictusweb.com/api/cba/blogs/${id}`
+          `http://localhost:2000/api/cba/blogs/${id}`
         )
 
         if (data) {
@@ -40,6 +43,7 @@ const EditBlog = () => {
           setCategory(data.category)
           setMedia(data.media)
           setText(data.text)
+          setUpcoming(data.upcoming)
         }
       } catch (error) {
         console.log(error)
@@ -100,14 +104,15 @@ const EditBlog = () => {
   const handleSubmit = async () => {
     try {
       const res = await axios.put(
-        `https://api.pictusweb.com/api/cba/blogs/update/${id}`,
+        // `https://api.pictusweb.com/api/cba/blogs/update/${id}`,
 
-        // `http://localhost:2000/api/cba/blogs/update/${id}`,
+        `http://localhost:2000/api/cba/blogs/update/${id}`,
         {
           title,
           category,
           media,
           text,
+          upcoming,
         }
       )
 
@@ -131,11 +136,11 @@ const EditBlog = () => {
         )
 
         if (res.status === 200) {
-          setSuccess('Príspevok úspešne vymazaný')
+          toast.success('Príspevok úspešne vymazaný')
           navigate(`/admin/${category}`)
         }
       } catch (error) {
-        setSuccess('Chyba pri vymazávaní')
+        toast.error('Chyba pri vymazávaní')
       }
     } else {
       console.log('User clicked Cancel or closed the dialog')
@@ -169,6 +174,20 @@ const EditBlog = () => {
               <option value='events'>Podujatia</option>
               <option value='blogs'>Blogy</option>
             </select>
+
+            {isEvent && (
+              <p
+                onClick={() => setUpcoming((prev) => !prev)}
+                className={
+                  upcoming
+                    ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
+                    : 'text-red-500 text-[25px] mt-4 cursor-pointer'
+                }
+              >
+                Nadchádzajúce podujatie? {upcoming ? 'Áno' : 'Nie'}
+              </p>
+            )}
+
             <div className='flex relative bg-[#2e2236] mt-8'>
               <p className='mr-4'>Obrázok</p>
               <button

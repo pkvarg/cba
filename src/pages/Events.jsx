@@ -9,13 +9,13 @@ const Events = () => {
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const { data } = await axios.get(
+        let { data } = await axios.get(
           //'https://api.pictusweb.com/api/cba/blogs/category/events'
           'http://localhost:2000/api/cba/blogs/category/events'
         )
 
         if (data) {
-          console.log(data)
+          data = data.filter((blog) => blog.english !== true)
           setBlogs(data)
         }
       } catch (error) {
@@ -25,6 +25,7 @@ const Events = () => {
 
     getEvents()
   }, [])
+
   return (
     <div className='text-[25px] text-white'>
       <CbaZoneBack destination={'/cba-zone'} />

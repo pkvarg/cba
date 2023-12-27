@@ -38,6 +38,9 @@ const CreatedEvents = ({ blogs }) => {
                 )}
               </div>
               <p>{blog.text}</p>
+              <p className='text-red-500 text-[20px] uppercase'>
+                {blog.upcoming && 'Nadchádzajúce'}
+              </p>{' '}
               {/* <p>Dátum: {getDate(blog.updatedAt)}</p> */}
             </div>
           ))
@@ -62,6 +65,10 @@ const CreatedEvents = ({ blogs }) => {
               )}
             </div>
             <p>{blogs.text}</p>
+            <p className='text-red-500 text-[20px] uppercase'>
+              {blogs.upcoming && 'Nadchádzajúce'}
+            </p>
+
             {/* <p>Dátum: {getDate(blogs.updatedAt)}</p> */}
           </div>
         )}

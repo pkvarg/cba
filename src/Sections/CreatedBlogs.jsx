@@ -4,26 +4,6 @@ import axios from 'axios'
 
 const CreatedBlogs = ({ blogs }) => {
   const navigate = useNavigate()
-  // const [blogs, setBlogs] = useState([])
-
-  // useEffect(() => {
-  //   const getBlogs = async () => {
-  //     try {
-  //       const { data } = await axios.get(
-  //         'https://api.pictusweb.com/api/cba/blogs'
-  //         // 'http://localhost:2000/api/cba/blogs'
-  //       )
-
-  //       if (data) {
-  //         setBlogs(data)
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-
-  //   getBlogs()
-  // }, [])
 
   const getDate = (dt) => {
     const date = new Date(dt)
