@@ -5,7 +5,7 @@ import { useStateContext } from '../context/StateContext'
 
 const CbaZoneNavbar = () => {
   const [navbar, setNavbar] = useState(false)
-  const { currentUser, setCurrentUser } = useStateContext()
+  const { currentUser, setCurrentUser, setIsLoggedIn } = useStateContext()
   const isAdmin = currentUser.isAdmin
   const id = currentUser._id
 
@@ -14,6 +14,8 @@ const CbaZoneNavbar = () => {
   const handleLogout = () => {
     setCurrentUser({})
     localStorage.removeItem('userInfo')
+    setIsLoggedIn(false)
+
     navigate('/')
   }
 

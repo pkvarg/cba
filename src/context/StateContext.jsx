@@ -4,7 +4,7 @@ const Context = createContext()
 export const StateContext = ({ children }) => {
   const [language, setLanguage] = useState('slovak')
   const [currentUser, setCurrentUser] = useState({})
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   // const loggedValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
 
   // lang
@@ -31,7 +31,14 @@ export const StateContext = ({ children }) => {
 
   return (
     <Context.Provider
-      value={{ language, setLanguage, currentUser, setCurrentUser }}
+      value={{
+        language,
+        setLanguage,
+        currentUser,
+        setCurrentUser,
+        isLoggedIn,
+        setIsLoggedIn,
+      }}
     >
       {children}
     </Context.Provider>

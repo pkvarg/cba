@@ -10,7 +10,7 @@ const HomeSec01 = ({ content }) => {
       <div className='flex justify-center'>
         <div className='bg-greyline h-[2px] w-[33%] my-6'></div>
       </div>
-      <div className='mx-2'>
+      <div className='mx-2 lg:mx-[20%]'>
         <p className='text-[27.5px] text-center'>{content.home01p1}</p>
         <p className='text-[27.5px] text-center'>{content.home01p2}</p>
         <p className='text-[27.5px] text-center'>{content.home01p3}</p>

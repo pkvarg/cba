@@ -8,14 +8,12 @@ const HomeSec02 = ({ content }) => {
       <h1 className='text-center text-[40px] font-medium pt-16 uppercase'>
         {content.home02title}
       </h1>
-      <div className='text-[30px] font-light mx-[5%] text-justify py-16 flex flex-col gap-4 lg:gap-2'>
+      <div className='text-[30px] font-light mx-2 lg:mx-[20%] text-justify py-16 flex flex-col gap-4 lg:gap-2'>
         <p>{content.home02p1}</p>
-        <p>
-          <p>{content.home02p2}</p>
-        </p>
-        <p>
-          <p>{content.home02p3}</p>
-        </p>
+
+        <p>{content.home02p2}</p>
+
+        <p>{content.home02p3}</p>
 
         <div className='flex justify-center'>
           <button

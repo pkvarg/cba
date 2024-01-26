@@ -8,6 +8,7 @@ body {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   overflow-x: hidden;
   background-color: #2e2236;
+  color: #4e7297;
 }
 
 .hero {
@@ -23,6 +24,11 @@ input {
   padding-left: 10px;
   color: black;
 }
+
+/* .sticky {
+  background-color: rgb(153, 150, 150);
+  color: white;
+} */
 
 @media (max-width: 768px) {
   .herom {

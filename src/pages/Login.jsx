@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const { currentUser, setCurrentUser } = useStateContext()
 
-  //const { isLoggedIn, setIsLoggedIn } = useStateContext()
+  const { isLoggedIn, setIsLoggedIn } = useStateContext()
   const loggedValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
   const [name, setName] = useState('')
   const [showAdminContent, setShowAdminContent] = useState(false)
@@ -23,16 +23,9 @@ const Login = () => {
     setShowAdminContent((prev) => !prev)
   }
 
-  // useEffect(() => {
-  //   const loggedStorage = JSON.parse(localStorage.getItem('blogging'))
-  //   const theValue = import.meta.env.VITE_EMAIL_EXTRA_TWO
-  //   if (loggedStorage === theValue) {
-  //     setIsLoggedIn(true)
-  //   }
-  //   if (isLoggedIn === true) {
-  //     window.localStorage.setItem('blogging', JSON.stringify(loggedValue))
-  //   }
-  // }, [isLoggedIn])
+  useEffect(() => {
+    isLoggedIn && navigate('/cba-zone')
+  }, [isLoggedIn])
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -44,6 +37,7 @@ const Login = () => {
     if (data === 'Neplatný email alebo heslo')
       return toast.error('Neplatný email alebo heslo')
     setCurrentUser(data)
+    setIsLoggedIn(true)
     navigate('/cba-zone')
   }
 

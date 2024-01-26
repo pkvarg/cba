@@ -8,11 +8,12 @@ import { useStateContext } from '../context/StateContext'
 import Contact from '../Sections/Contact'
 import BlogByCategory from '../Sections/BlogByCategory'
 import Footer from '../components/Footer'
+import GalleryShort from '../Sections/GalleryShort'
 
 const Home = () => {
   const { language } = useStateContext()
   const [content, setContent] = useState({})
-  const [showContactForm, setShowContactForm] = useState(false)
+  // const [showContactForm, setShowContactForm] = useState(false)
   const [cookieAccept, setCookieAccept] = useState(false)
   useEffect(() => {
     if (language === 'slovak') {
@@ -24,11 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <Header
-        content={content}
-        showContactForm={showContactForm}
-        setShowContactForm={setShowContactForm}
-      />
+      <Header content={content} />
       <div className='hero h-[90vh] lg:h-[110vh] text-[25px] text-white -mt-[25%] lg:-mt-[8%]'>
         {language === 'slovak' ? (
           <h1 className='text-center text-[75px] leading-[75px] pt-[50%] lg:pt-[20%]'>
@@ -58,14 +55,11 @@ const Home = () => {
       </div>
       <HomeSec01 content={content} />
       <HomeSec02 content={content} />
+      <GalleryShort content={content} />
       <HomeSec03 content={content} language={language} />
       {/* <BlogByCategory /> */}
 
-      <Contact
-        showContactForm={showContactForm}
-        setShowContactForm={setShowContactForm}
-        content={content}
-      />
+      <Contact content={content} />
       <Footer />
     </>
   )
