@@ -1,0 +1,114 @@
+{
+  "slovak": {
+    "headerTitle": "Cirkev v Bratislave",
+
+    "headerAbout": "O nás",
+    "headerConfession": "Vyznanie viery",
+    "headerEvents": "Podujatia",
+    "headerGallery": "Galéria",
+
+    "headerContact": "Kontakt",
+    "headerDownload": "Na stiahnutie",
+
+    "home01title1": "MILUJEME KRISTA. MILUJEME JEHO ĽUD.",
+    "home01title2": "BUDUJEME JEHO CIRKEV.",
+    "heroRef3": "Rimanom 1:19-20",
+
+    "home01p1": "Sme veriaci v Pána Ježiša Krista, ktorého sme osobne prijali ako nášho Spasiteľa.",
+    "home01p2": "On je tou najúžasnejšou a najpríjemnejšou osobou.",
+    "home01p3": "Milujeme Ho a snažíme sa dávať Mu prvé miesto vo všetkých veciach.",
+    "home01p4": "Radujte sa z očistenia Ježišovou krvou, majte účasť na božskom živote, naplňte sa Duchom Svätým a buďte privedení do spoločenstva Kristovho Tela!",
+
+    "home02title": "ČOMU VERÍME",
+
+    "home02p1": "Zachovávame všeobecnú vieru, ktorá je zdieľaná všetkými veriacimi kresťanmi, obsah ktorej bol ustanovený raz a navždy v Starom a Novom Zákone.",
+    "home02p2": "Konkrétne je táto všeobecná, viera zostavená z nasledujúcich faktov, v ktoré veríme, v súvislosti s Bibliou, Bohom, Kristom, spásou a večnosťou: Považujeme Bibliu za úplné a jediné božské zjavenie.",
+    "home02p3": "Pevne veríme, že Boh je večne jeden a tiež večne Otcom, Synom a Duchom – traja, ktorí sú odlišní avšak neoddeliteľní.",
+    "home02p4": "Veríme, že Kristus je úplný Boh i dokonalý človek. Bez opustenia Svojho božstva bol počatý v lone ľudskej panny, žil naozajstným ľudským životom na zemi a zomrel zástupnú a všetko zahŕňajúcu smrť na kríži. Po troch dňoch vstal telesne z mŕtvych a vystúpil do nebies. Teraz je v sláve, plne Boh a stále plne človek. Očakávame Jeho blízky príchod s Božím kráľovstvom, skrze ktoré bude vládnuť nad zemou v miléniu a vo večnosti.",
+    "home02p5": "Vyznávame, že tretí z Trojice, Duch, je takisto Bohom. Všetko, čo Otec má a je, je vyjadrené Synom a všetko, čo Syn má a je, je uskutočnené ako Duch.",
+    "home02p6": "Ďalej veríme, že ľudstvo potrebuje Božiu spásu. Keďže sme boli úplne neschopní naplniť ťažké požiadavky Božej spravodlivosti, svätosti a slávy, Kristus všetky požiadavky naplnil Svojou smrťou na kríži. Kvôli Kristovej smrti nám Boh odpustil naše hriechy, zmieril nás so sebou samým a ospravedlnil nás tým, že Krista učinil našou spravodlivosťou. Na základe Kristovho vykúpenia Boh obrodzuje vykúpených Svojím Duchom pre dovŕšenie svoje spásy, aby sa mohli stať Jeho deťmi.",
+    "home02p7": "Majúc teraz Boží život a prirodzenosť, veriaci vychutnávajú každodennú spásu v Jeho Tele v tomto veku a večnú spásu v prichádzajúcom veku a vo večnosti. Vo večnosti budeme prebývať s Bohom v Novom Jeruzaleme, dovŕšení Božej spásy Jeho vyvolených.",
+    "home02b1": "viac",
+    "home02b2": "menej",
+
+    "home03title": "PODUJATIA",
+    "home03sub": "BLÍŽIACE SA PODUJATIA",
+
+    "cookiesText": "Táto stránka nezhromažďuje žiadne údaje",
+    "cookiesButton": "Pokračovať",
+
+    "back": "Naspäť",
+
+    "contactTitle": "Kontakt",
+    "contactName": "Vaše Meno",
+    "contactEmail": "Váš e-mail",
+    "contactSubject": "Predmet",
+    "contactPhone": "Telefón",
+    "contactMessage": "Vaša správa",
+    "contactAgree": "Súhlasím so",
+    "contactGdpr": "spracovaním údajov",
+
+    "contactSend": "Poslať",
+    "contactError": "Neodoslané! Napíšte nám na náš email, prosím.",
+    "contactError2": "Chyba! Napíšte nám na cestazivota@cestazivota.sk, prosím.",
+    "contactSuccess": "Vaša správa bola úspešne odoslaná!",
+
+    "gdpr1": "Vami poskytnuté údaje neuchovávame v žiadnej databáze.",
+    "gdpr2": "Email bude použitý len na odpoveď na Vašu správu."
+  },
+
+  "english": {
+    "headerTitle": "The Church in Bratislava",
+
+    "headerAbout": "About",
+    "headerConfession": "Confession of faith",
+    "headerEvents": "Events",
+    "headerGallery": "Gallery",
+    "headerContact": "Contact",
+    "headerDownload": "Download",
+
+    "home01title1": "  WE LOVE CHRIST. WE LOVE HIS PEOPLE.",
+    "home01title2": "WE BUILD HIS CHURCH.",
+
+    "home01p1": "We believe in the Lord Jesus Christ, whom we have received personally as our Savior.",
+    "home01p2": "He is the most amazing and loveable person.",
+    "home01p3": "We love Him and endeavor to give Him the first place in all things.",
+    "home01p4": "Rejoice in being washed by His blood, partaking on the divine nature, be filled with the Holy Spirit and be led to the fellowship of His Body!",
+
+    "home02title": "WHAT WE BELIEVE",
+    "home02p1": "We keep the general faith, which is shared by all Christian believers, the content of which was established once and for all in the Old and New Testament.",
+    "home02p2": "Specifically, this general belief is composed of the following facts we believe regarding the Bible, God, Christ, salvation, and eternity: We hold the Bible to be the complete and only divine revelation.",
+    "home02p3": "We strongly believe that God is eternally one and also eternally Father, Son and Spirit - three who are distinct but not separate.",
+    "home02p4": "We believe that Christ is complete God and perfect man. Without abandoning His divinity, He was conceived in the womb of a human virgin, lived a genuine human life on earth, and died a vicarious and all-inclusive death on the cross. After three days he rose bodily from the dead and ascended to heaven. He is now in glory, fully God and still fully man. We await His imminent arrival with the Kingdom of God, through which He will rule over the earth in the millennium and in eternity.",
+    "home02p5": "We confess that the third of the Trinity, the Spirit, is also God. All that the Father has and is is expressed by the Son, and all that the Son has and is is realized as Spirit.",
+    "home02p6": "Furthermore, we believe that humanity needs God's salvation. Since we were completely unable to meet the heavy demands of God's righteousness, holiness, and glory, Christ fulfilled all demands by His death on the cross. Because of Christ's death, God forgave us our sins, reconciled us to himself, and justified us by making Christ our righteousness. On the basis of Christ's redemption, God regenerates the redeemed with His Spirit for the completion of His salvation, so that they can become His children.",
+    "home02p7": "Having God's life and nature now, believers enjoy daily salvation in His Body in this age and eternal salvation in the age to come and in eternity. In eternity we will dwell with God in the New Jerusalem, the consummation of God's salvation of His elect.",
+    "home02b1": "more",
+    "home02b2": "less",
+
+    "home03title": "EVENTS",
+    "home03sub": "UPCOMING EVENTS",
+
+    "cookiesText": "This site does not collect any information",
+    "cookiesButton": "Continue",
+
+    "back": "Back",
+
+    "contactTitle": "Contact",
+    "contactName": "Name",
+    "contactSubject": "Subject",
+    "contactEmail": "Your e-mail",
+    "contactPhone": "Phone",
+    "contactMessage": "Your message",
+    "contactAgree": "I agree to",
+    "contactGdpr": "process my data",
+
+    "contactSend": "Send",
+    "contactError": "Not sent! Contact via our email, please.",
+    "contactError2": "Error! Write to cestazivota@cestazivota.sk, please.",
+    "contactSuccess": "Message successfully sent!",
+
+    "gdpr1": "We do not store the data provided by you in any database.",
+    "gdpr2": "The email will only be used to respond to your message."
+  }
+}

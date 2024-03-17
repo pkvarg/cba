@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Yanone+Kaffeesatz:wght@200;300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  overflow-x: hidden;
+  background-color: #2e2236;
+  color: #4e7297;
+}
+
+.hero {
+  background-image: linear-gradient(to top, #12121168, #87848479, #0d0c0c74),
+    url('/vineyard.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+}
+
+input {
+  padding-left: 10px;
+  color: black;
+}
+
+/* .sticky {
+  background-color: rgb(153, 150, 150);
+  color: white;
+} */
+
+@media (max-width: 768px) {
+  .herom {
+    background-image: linear-gradient(to top, #12121168, #87848479, #0d0c0c74),
+      url('/vineyard.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: calc(310%);
+  }
+}
