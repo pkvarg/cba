@@ -1,6 +1,6 @@
 import Home from './pages/Home'
 import Audio from './pages/Audio'
-import RoomPage from './pages/Roompage'
+//import RoomPage from './pages/Roompage'
 import Login from './pages/Login'
 import EditBlog from './pages/EditBlog'
 import Footer from './components/Footer'
@@ -20,8 +20,11 @@ import { StateContext } from './context/StateContext'
 import { firebaseConfig } from '../firebaseConfig'
 import { initializeApp } from 'firebase/app'
 import { Toaster } from 'react-hot-toast'
+import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 
 export const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app)
+export const provider = new GoogleAuthProvider()
 
 function App() {
   return (
@@ -30,7 +33,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/audio' element={<Audio />} />
-          <Route path='/room/:roomId' element={<RoomPage />} />
+          {/* <Route path='/room/:roomId' element={<RoomPage />} /> */}
           <Route path='/login' element={<Login />} />
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/download' element={<Download />} />

@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@ericz1803/react-google-calendar": "^4.3.2",
     "@zegocloud/zego-uikit-prebuilt": "^1.8.11",
     "axios": "^1.5.1",
     "firebase": "^10.5.0",
