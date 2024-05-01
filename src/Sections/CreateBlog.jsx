@@ -18,6 +18,7 @@ const CreateBlog = ({ category, setKey }) => {
   const [english, setEnglish] = useState(false)
   const currentPathname = window.location.pathname
   const isEvent = currentPathname.includes('events')
+  const isBlog = currentPathname.includes('blogs')
 
   const [media, setMedia] = useState('')
 
@@ -119,6 +120,19 @@ const CreateBlog = ({ category, setKey }) => {
             Anglický oznam? {english ? 'Áno' : 'Nie'}
           </p>
         </>
+      )}
+
+      {isBlog && (
+        <p
+          onClick={() => setEnglish((prev) => !prev)}
+          className={
+            english
+              ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
+              : 'text-red-500 text-[25px] mt-4 cursor-pointer'
+          }
+        >
+          Anglický blog? {english ? 'Áno' : 'Nie'}
+        </p>
       )}
       {/* <label htmlFor='text' className='text-[25px] mt-4'>
         Kategória

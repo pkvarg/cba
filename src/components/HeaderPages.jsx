@@ -5,7 +5,7 @@ import LanguageBar from './LanguageBar'
 import { FiLogIn } from 'react-icons/fi'
 import { MdCloudDownload } from 'react-icons/md'
 
-const Header = ({ content }) => {
+const HeaderPages = ({ content }) => {
   const [navbar, setNavbar] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
 
@@ -28,9 +28,6 @@ const Header = ({ content }) => {
   console.log(isSticky)
 
   return (
-    // <header className='herom'>
-    //   {/* <nav className='w-full text-white nav-font'></nav> */}
-    // </header>
     <nav
       id='navbar'
       className={
@@ -91,38 +88,10 @@ const Header = ({ content }) => {
           >
             <ul className='justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-[30px] lg:text-[25px] items-center'>
               <li>
-                {/* <a href='/'>O nás</a> */}
-                <Link
-                  to='about'
-                  spy={true}
-                  smooth={true}
-                  offset={0}
-                  duration={500}
-                  className='hover:text-red-600 cursor-pointer'
-                >
-                  {content.headerAbout}
-                </Link>
-              </li>
-              <li>
-                <DomLink
-                  to='/blog'
-                  className='hover:text-red-600 cursor-pointer'
-                >
-                  Blog
+                <DomLink to='/' className='hover:text-red-600 cursor-pointer'>
+                  {content.headerTitle}
                 </DomLink>
                 {/* <a href='/'>Vyznanie viery</a> */}
-              </li>
-              <li>
-                <Link
-                  to='events'
-                  spy={true}
-                  smooth={true}
-                  offset={0}
-                  duration={500}
-                  className='hover:text-red-600 cursor-pointer'
-                >
-                  {content.headerEvents}
-                </Link>
               </li>
 
               <div className='group relative  cursor-pointer'>
@@ -192,4 +161,4 @@ const Header = ({ content }) => {
   )
 }
 
-export default Header
+export default HeaderPages

@@ -55,9 +55,9 @@ const Home = () => {
       </div>
       <HomeSec01 content={content} />
       <HomeSec02 content={content} />
-      <GalleryShort content={content} />
+      <BlogByCategory language={language} />
+      {/* <GalleryShort content={content} /> */}
       <HomeSec03 content={content} language={language} />
-      {/* <BlogByCategory /> */}
 
       <Contact content={content} />
       <Footer />

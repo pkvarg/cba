@@ -21,6 +21,7 @@ import { firebaseConfig } from '../firebaseConfig'
 import { initializeApp } from 'firebase/app'
 import { Toaster } from 'react-hot-toast'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
+import Blog from './pages/Blog'
 
 export const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
@@ -48,6 +49,7 @@ function App() {
           <Route path='/admin/blogs' element={<AdminBlogs />} />
           <Route path='/admin/announcements' element={<AdminAnnouncements />} />
           <Route path='/admin/edit/:id' element={<EditBlog />} />
+          <Route path='/blog' element={<Blog />} />
         </Routes>
         {/* <Footer /> */}
       </StateContext>

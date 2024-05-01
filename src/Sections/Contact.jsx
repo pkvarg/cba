@@ -80,11 +80,9 @@ const Contact = ({ content }) => {
 
   return (
     <>
+      <div className='bg-[#2e2236] h-8' id='contact'></div>
       <div className='bg-[#2e2236] pt-16 pb-10 text-[25px] text-white'>
-        <h1
-          id='contact'
-          className='text-[35px] lg:text-[35px] text-white text-center lg:pt-0 py-4'
-        >
+        <h1 className='text-[35px] lg:text-[35px] text-white text-center lg:pt-0 py-4'>
           {content.contactTitle}
         </h1>
         <div className='mx-4 md:mx-6 lg:mx-0 flex lg:flex-row flex-col lg:justify-center'>
@@ -150,7 +148,7 @@ const Contact = ({ content }) => {
                     required='required'
                   ></textarea>
 
-                  <div className='flex flex-row form-check mt-8'>
+                  <div className='flex flex-row form-check mt-8 items-center'>
                     <input
                       id='flexCheckDefault'
                       type='checkbox'
