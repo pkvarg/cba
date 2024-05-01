@@ -9,7 +9,7 @@ const LanguageBar = () => {
   }
 
   return (
-    <div className='flex flex-row gap-3 items-center mt-[6px]'>
+    <div className='flex flex-row gap-3 items-center mt-[0px]'>
       <button onClick={() => handleLanguage('english')}>
         <img
           className='w-[3rem] md:w-[3rem] lg:w-[2rem]'

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-scroll'
 import { Link as DomLink } from 'react-router-dom'
 import LanguageBar from './LanguageBar'
@@ -8,24 +9,23 @@ import { MdCloudDownload } from 'react-icons/md'
 const HeaderPages = ({ content }) => {
   const [navbar, setNavbar] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsSticky(true)
-      } else {
-        setIsSticky(false)
-      }
-    }
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 0) {
+  //       setIsSticky(true)
+  //     } else {
+  //       setIsSticky(false)
+  //     }
+  //   }
 
-    window.addEventListener('scroll', handleScroll)
+  //   window.addEventListener('scroll', handleScroll)
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  console.log(isSticky)
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll)
+  //   }
+  // }, [])
 
   return (
     <nav
@@ -40,7 +40,7 @@ const HeaderPages = ({ content }) => {
         <div className='mb-0 lg:mb-2'>
           <div className='flex items-center justify-between py-3 md:py-5 md:block'>
             <a className='text-[2.05rem] font-normal' href='/'>
-              {content.headerTitle}
+              {content.headerPagesHome}
             </a>
             <div className='md:hidden'>
               <button
@@ -125,11 +125,7 @@ const HeaderPages = ({ content }) => {
 
               <li>
                 <Link
-                  to='contact'
-                  spy={true}
-                  smooth={true}
-                  offset={0}
-                  duration={500}
+                  onClick={() => navigate('/home#contact')}
                   className='hover:text-red-600 cursor-pointer'
                 >
                   {content.headerContact}

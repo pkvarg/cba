@@ -166,7 +166,6 @@ const Header = ({ content }) => {
                   {content.headerContact}
                 </Link>
               </li>
-
               <li>
                 <DomLink to='/download' className='hover:text-red-600'>
                   {/* {content.headerDownload} */}
@@ -181,6 +180,7 @@ const Header = ({ content }) => {
                   <FiLogIn />
                 </DomLink>
               </li>
+
               <li>
                 <LanguageBar />
               </li>

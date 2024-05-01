@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const BlogByCategory = ({ language }) => {
+const BlogByCategory = ({ content, language }) => {
   const categoryToFetch = 'blogs'
-  const [blogsInCategory, setBlogsInCategory] = useState([])
 
   const [blogs, setBlogs] = useState([])
   const [englishBlogs, setEnglishBlogs] = useState([])
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -48,7 +50,13 @@ const BlogByCategory = ({ language }) => {
                     className='w-[100px]'
                   />
                 )}
-                <p className='font-[300]'>{blog.text}</p>
+                <p className='font-[300] text-justify'>{blog.text}</p>
+                <p
+                  onClick={() => navigate(`/blog#${blog._id}`)}
+                  className='ml-auto text-[20px] cursor-pointer'
+                >
+                  {content.homeBlog}
+                </p>
               </div>
             ))}
           {language === 'english' &&
@@ -67,6 +75,12 @@ const BlogByCategory = ({ language }) => {
                   />
                 )}
                 <p className='font-[300]'>{blog.text}</p>
+                <p
+                  onClick={() => navigate(`/blog#${blog._id}`)}
+                  className='ml-auto text-[20px] cursor-pointer'
+                >
+                  {content.homeBlog}
+                </p>
               </div>
             ))}
         </div>

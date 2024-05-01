@@ -11,6 +11,9 @@
     "headerContact": "Kontakt",
     "headerDownload": "Na stiahnutie",
 
+    "headerPagesHome": "Domov",
+    "headerPagesX": "Na stiahnutie",
+
     "home01title1": "MILUJEME KRISTA. MILUJEME JEHO ĽUD.",
     "home01title2": "BUDUJEME JEHO CIRKEV.",
     "heroRef3": "Rimanom 1:19-20",
@@ -39,6 +42,8 @@
     "cookiesButton": "Pokračovať",
 
     "back": "Naspäť",
+
+    "homeBlog": "Na blog",
 
     "contactTitle": "Kontakt",
     "contactName": "Vaše Meno",
@@ -69,6 +74,9 @@
     "headerContact": "Contact",
     "headerDownload": "Download",
 
+    "headerPagesHome": "Home",
+    "headerPagesX": "Na stiahnutie",
+
     "home01title1": "  WE LOVE CHRIST. WE LOVE HIS PEOPLE.",
     "home01title2": "WE BUILD HIS CHURCH.",
 
@@ -95,6 +103,8 @@
     "cookiesButton": "Continue",
 
     "back": "Back",
+
+    "homeBlog": "Go to blog",
 
     "contactTitle": "Contact",
     "contactName": "Name",

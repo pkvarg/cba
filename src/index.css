@@ -25,6 +25,15 @@ input {
   color: black;
 }
 
+.blogpage {
+  background-image: linear-gradient(to top, #12121168, #87848479, #0d0c0c74),
+    url('/blogpage.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+}
+
 /* .sticky {
   background-color: rgb(153, 150, 150);
   color: white;
