@@ -74,7 +74,7 @@ const BlogByCategory = ({ content, language }) => {
                     className='w-[100px]'
                   />
                 )}
-                <p className='font-[300]'>{blog.text}</p>
+                <p className='font-[300] text-justify'>{blog.text}</p>
                 <p
                   onClick={() => navigate(`/blog/${blog._id}`)}
                   className='ml-auto text-[20px] cursor-pointer'
