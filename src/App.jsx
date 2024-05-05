@@ -51,6 +51,7 @@ function App() {
           <Route path='/admin/announcements' element={<AdminAnnouncements />} />
           <Route path='/admin/edit/:id' element={<EditBlog />} />
           <Route path='/blog' element={<Blog />} />
+          <Route path='/blog/:id' element={<Blog />} />
         </Routes>
         {/* <Footer /> */}
       </StateContext>

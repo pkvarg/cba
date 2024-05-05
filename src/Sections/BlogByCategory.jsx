@@ -14,8 +14,8 @@ const BlogByCategory = ({ content, language }) => {
     const fetchCategory = async () => {
       try {
         const { data } = await axios.get(
-          //`https://api.pictusweb.com/api/cba/blogs/category/${categoryToFetch}`
-          `http://localhost:2000/api/cba/blogs/category/${categoryToFetch}`
+          `https://api.pictusweb.com/api/cba/blogs/category/${categoryToFetch}`
+          //`http://localhost:2000/api/cba/blogs/category/${categoryToFetch}`
         )
         if (data) {
           console.log(data)
@@ -52,7 +52,7 @@ const BlogByCategory = ({ content, language }) => {
                 )}
                 <p className='font-[300] text-justify'>{blog.text}</p>
                 <p
-                  onClick={() => navigate(`/blog#${blog._id}`)}
+                  onClick={() => navigate(`/blog/${blog._id}`)}
                   className='ml-auto text-[20px] cursor-pointer'
                 >
                   {content.homeBlog}
@@ -76,7 +76,7 @@ const BlogByCategory = ({ content, language }) => {
                 )}
                 <p className='font-[300]'>{blog.text}</p>
                 <p
-                  onClick={() => navigate(`/blog#${blog._id}`)}
+                  onClick={() => navigate(`/blog/${blog._id}`)}
                   className='ml-auto text-[20px] cursor-pointer'
                 >
                   {content.homeBlog}

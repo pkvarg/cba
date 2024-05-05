@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import HeaderPages from '../components/HeaderPages'
 import Translation from '../Home.json'
 import { useStateContext } from '../context/StateContext'
+import { useParams } from 'react-router-dom'
 import Contact from '../Sections/Contact'
 import Footer from '../components/Footer'
 import axios from 'axios'
@@ -13,6 +14,28 @@ const Blog = () => {
 
   const [blogs, setBlogs] = useState([])
   const [englishBlogs, setEnglishBlogs] = useState([])
+  const [showContact, setShowContact] = useState(false)
+  const [blogId, setBlogId] = useState('')
+
+  const { id } = useParams()
+
+  useEffect(() => {
+    if (showContact) {
+      const element = document.getElementById('contact')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+
+    if (id) {
+      setBlogId(id)
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    console.log(id)
+  }, [showContact, id])
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -44,7 +67,7 @@ const Blog = () => {
   return (
     <>
       <div className='blogpage h-screen'>
-        <HeaderPages content={content} />
+        <HeaderPages content={content} setShowContact={setShowContact} />
 
         <div className='text-white text-center text-[30px]'>Blog</div>
       </div>
@@ -56,44 +79,55 @@ const Blog = () => {
             {language === 'slovak' &&
               blogs &&
               blogs.map((blog) => (
-                <div
-                  key={blog._id}
-                  className='flex flex-col gap-2 justify-center items-center py-2 mt-8'
-                >
-                  <h2>{blog.title}</h2>
-                  {blog.media && (
-                    <img
-                      src={blog.media}
-                      alt={blog.title}
-                      className='w-[100px]'
-                    />
-                  )}
-                  <p className='font-[300] text-justify'>{blog.text}</p>
+                <div className='flex flex-col' id={blog._id} key={blog._id}>
+                  <div className='flex flex-col gap-2 justify-center items-center py-2 mt-8'>
+                    <h2>{blog.title}</h2>
+                    {blog.media && (
+                      <img
+                        src={blog.media}
+                        alt={blog.title}
+                        className='w-[100px]'
+                      />
+                    )}
+                    <p className='font-[300] text-justify'>{blog.text}</p>
+                  </div>
+                  <a
+                    href='https://www.rhemabooks.org/sk/home/'
+                    target='_blank'
+                    className='text-[20px] ml-auto cursor-pointer'
+                  >
+                    Viac na stránke rhemabooks.org
+                  </a>
                 </div>
               ))}
             {language === 'english' &&
               englishBlogs &&
               englishBlogs.map((blog) => (
-                <div
-                  key={blog._id}
-                  className='flex flex-col gap-2 justify-center items-center py-2 mt-8'
-                >
-                  <h2>{blog.title}</h2>
-                  {blog.media && (
-                    <img
-                      src={blog.media}
-                      alt={blog.title}
-                      className='w-[100px]'
-                    />
-                  )}
-                  <p className='font-[300] text-justify'>{blog.text}</p>
+                <div className='flex flex-col' id={blog._id} key={blog._id}>
+                  <div className='flex flex-col gap-2 justify-center items-center py-2 mt-8'>
+                    <h2>{blog.title}</h2>
+                    {blog.media && (
+                      <img
+                        src={blog.media}
+                        alt={blog.title}
+                        className='w-[100px]'
+                      />
+                    )}
+                    <p className='font-[300] text-justify'>{blog.text}</p>
+                  </div>
+                  <a
+                    href='https://www.rhemabooks.org/en/home/'
+                    target='_blank'
+                    className='text-[20px] ml-auto cursor-pointer'
+                  >
+                    More on rhemabooks.org
+                  </a>
                 </div>
               ))}
           </div>
         </div>
       </div>
-
-      <Contact content={content} />
+      {showContact && <Contact content={content} id='contact' />}
       <Footer />
     </>
   )

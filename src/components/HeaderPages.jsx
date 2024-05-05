@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-scroll'
 import { Link as DomLink } from 'react-router-dom'
@@ -6,36 +6,13 @@ import LanguageBar from './LanguageBar'
 import { FiLogIn } from 'react-icons/fi'
 import { MdCloudDownload } from 'react-icons/md'
 
-const HeaderPages = ({ content }) => {
+const HeaderPages = ({ content, setShowContact }) => {
   const [navbar, setNavbar] = useState(false)
-  const [isSticky, setIsSticky] = useState(false)
+
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 0) {
-  //       setIsSticky(true)
-  //     } else {
-  //       setIsSticky(false)
-  //     }
-  //   }
-
-  //   window.addEventListener('scroll', handleScroll)
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll)
-  //   }
-  // }, [])
-
   return (
-    <nav
-      id='navbar'
-      className={
-        isSticky
-          ? 'sticky top-0  w-full text-white nav-font bg-[#768c51] z-9999'
-          : 'top-0  w-full text-white nav-font'
-      }
-    >
+    <nav id='navbar' className={'top-0  w-full text-white nav-font'}>
       <div className='justify-between px-4 mx-auto md:items-center md:flex md:px-8'>
         <div className='mb-0 lg:mb-2'>
           <div className='flex items-center justify-between py-3 md:py-5 md:block'>
@@ -123,13 +100,11 @@ const HeaderPages = ({ content }) => {
                 </div>
               </div>
 
-              <li>
-                <Link
-                  onClick={() => navigate('/home#contact')}
-                  className='hover:text-red-600 cursor-pointer'
-                >
-                  {content.headerContact}
-                </Link>
+              <li
+                onClick={() => setShowContact(true)}
+                className='hover:text-red-600 cursor-pointer'
+              >
+                {content.headerContact}
               </li>
 
               <li>
