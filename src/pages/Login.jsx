@@ -29,10 +29,15 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    const { data } = await axios.post('http://localhost:2000/api/cba/login', {
-      email,
-      password,
-    })
+
+    const { data } = await axios.post(
+      'https://api.pictusweb.com/api/cba/login',
+      // 'http://localhost:2000/api/cba/login'
+      {
+        email,
+        password,
+      }
+    )
     console.log(data)
     if (data === 'Neplatný email alebo heslo')
       return toast.error('Neplatný email alebo heslo')

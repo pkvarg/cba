@@ -45,6 +45,7 @@
 
     "homeBlog": "Na blog",
 
+    "contactMessageSuccess": "Správa úspešne odoslaná",
     "contactTitle": "Kontakt",
     "contactName": "Vaše Meno",
     "contactEmail": "Váš e-mail",
@@ -106,6 +107,7 @@
 
     "homeBlog": "Go to blog",
 
+    "contactMessageSuccess": "Message sent successfully",
     "contactTitle": "Contact",
     "contactName": "Name",
     "contactSubject": "Subject",

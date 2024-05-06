@@ -19,6 +19,8 @@ const CreateBlog = ({ category, setKey }) => {
   const currentPathname = window.location.pathname
   const isEvent = currentPathname.includes('events')
   const isBlog = currentPathname.includes('blogs')
+  const [hasLink, setHasLink] = useState(false)
+  const [link, setLink] = useState('')
 
   const [media, setMedia] = useState('')
 
@@ -62,7 +64,7 @@ const CreateBlog = ({ category, setKey }) => {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        // 'https://api.pictusweb.com/api/cba/blog',
+        //'https://api.pictusweb.com/api/cba/blog',
         'http://localhost:2000/api/cba/blog',
         {
           title,
@@ -71,6 +73,7 @@ const CreateBlog = ({ category, setKey }) => {
           text,
           upcoming,
           english,
+          link,
         }
       )
 
@@ -80,6 +83,7 @@ const CreateBlog = ({ category, setKey }) => {
         setTitle('')
         setFile('')
         setText('')
+        setLink('')
       }
     } catch (error) {
       console.log(error)
@@ -117,9 +121,28 @@ const CreateBlog = ({ category, setKey }) => {
                 : 'text-red-500 text-[25px] mt-4 cursor-pointer'
             }
           >
-            Anglický oznam? {english ? 'Áno' : 'Nie'}
+            Je toto anglický oznam? {english ? 'Áno' : 'Nie'}
+          </p>
+
+          <p
+            onClick={() => setHasLink((prev) => !prev)}
+            className={
+              hasLink
+                ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
+                : 'text-red-500 text-[25px] mt-4 cursor-pointer'
+            }
+          >
+            Pridať link odkazujúci na iný web? {hasLink ? 'Áno' : 'Nie'}
           </p>
         </>
+      )}
+      {hasLink && (
+        <textarea
+          className='text-[#2e2236] mt-4 pl-1'
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
+          placeholder='Vlož link...'
+        />
       )}
 
       {isBlog && (
@@ -131,7 +154,7 @@ const CreateBlog = ({ category, setKey }) => {
               : 'text-red-500 text-[25px] mt-4 cursor-pointer'
           }
         >
-          Anglický blog? {english ? 'Áno' : 'Nie'}
+          Je toto anglický blog? {english ? 'Áno' : 'Nie'}
         </p>
       )}
       {/* <label htmlFor='text' className='text-[25px] mt-4'>

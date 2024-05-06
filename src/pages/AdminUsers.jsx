@@ -17,7 +17,10 @@ const AdminUsers = () => {
   useEffect(() => {
     const getAllUsers = async () => {
       try {
-        const { data } = await axios.get('http://localhost:2000/api/cba/getall')
+        const { data } = await axios.get(
+          `https://api.pictusweb.com/api/cba/getall`
+          // 'http://localhost:2000/api/cba/getall'
+        )
         if (data) {
           setUsers(data)
         }
@@ -31,9 +34,13 @@ const AdminUsers = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post(`http://localhost:2000/api/cba/newuser`, {
-        emailToDb,
-      })
+      const res = await axios.post(
+        `https://api.pictusweb.com/api/cba/newuser`,
+        //`http://localhost:2000/api/cba/newuser`
+        {
+          emailToDb,
+        }
+      )
       console.log(res)
       if (res.status === 200) toast.error(res.data)
       if (res.status === 201) toast.success('Užívateľ vytvorený')

@@ -9,13 +9,13 @@ const HomeSec03 = ({ content, language }) => {
     const getEvents = async () => {
       try {
         const { data } = await axios.get(
-          //'https://api.pictusweb.com/api/cba/blogs/category/events'
-          'http://localhost:2000/api/cba/blogs/category/events'
+          'https://api.pictusweb.com/api/cba/blogs/category/events'
+          //'http://localhost:2000/api/cba/blogs/category/events'
         )
 
         if (data) {
           console.log(data)
-          setBlogs(data)
+          setBlogs(data.filter((blog) => !blog.english))
           setEnglishBlogs(data.filter((blog) => blog.english === true))
         }
       } catch (error) {
@@ -38,41 +38,54 @@ const HomeSec03 = ({ content, language }) => {
         <div className='flex flex-col items-center justify-center text-[27.5px]'>
           <h2 className='text-[35px]'>{content.home03sub}</h2>
 
-          {language === 'slovak'
-            ? blogs &&
-              blogs.map(
-                (blog) =>
-                  blog.upcoming === true && (
-                    <div key={blog._id}>
-                      <h3 className='text-[30px] text-center mt-2 mx-4 lg:mx-0'>
-                        {blog.title}
-                      </h3>
-                      <p className='mt-2 lg:whitespace-pre text-center'>
-                        {blog.text}
-                      </p>
-                      {/* <p>Sofia, Bulharsko</p> */}
-                    </div>
-                  )
-              )
-            : englishBlogs.map((blog) => (
-                <div key={blog._id}>
-                  <h3 className='text-[30px] text-center mt-2 mx-4 lg:mx-0'>
-                    {blog.title}
-                  </h3>
-                  <p className='mt-2 lg:whitespace-pre text-center'>
-                    {blog.text}
-                  </p>
-                  {/* <p>Sofia, Bulharsko</p> */}
-                </div>
-              ))}
-
-          <a
-            className='my-4 border border-[#2e2236] rounded-2xl px-4 pt-1 hover:bg-[#2e2236] hover:text-white'
-            href='https://churchesceeb.org/home-sk/'
-            target='_blank'
-          >
-            {content.home02b1}
-          </a>
+          {language === 'slovak' &&
+            blogs &&
+            blogs.map(
+              (blog) =>
+                blog.upcoming === true && (
+                  <div key={blog._id}>
+                    <h3 className='text-[30px] text-center mt-2 mx-4 lg:mx-0'>
+                      {blog.title}
+                    </h3>
+                    <p className='mt-2 lg:whitespace-pre text-center'>
+                      {blog.text}
+                    </p>
+                    {blog.link && (
+                      <div className='flex justify-center'>
+                        <a
+                          className='mt-8 mb-4 border border-[#2e2236] rounded-2xl px-4 pt-1 hover:bg-[#2e2236] hover:text-white'
+                          href={blog.link}
+                          target='_blank'
+                        >
+                          {content.home02b1}
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                )
+            )}
+          {language === 'english' &&
+            englishBlogs.map((blog) => (
+              <div key={blog._id}>
+                <h3 className='text-[30px] text-center mt-2 mx-4 lg:mx-0'>
+                  {blog.title}
+                </h3>
+                <p className='mt-2 lg:whitespace-pre text-center'>
+                  {blog.text}
+                </p>
+                {blog.link && (
+                  <div className='flex justify-center'>
+                    <a
+                      className='mt-8 mb-4 border border-[#2e2236] rounded-2xl px-4 pt-1 hover:bg-[#2e2236] hover:text-white'
+                      href={blog.link}
+                      target='_blank'
+                    >
+                      {content.home02b1}
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
         </div>
       </div>
     </>

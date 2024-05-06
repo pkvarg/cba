@@ -17,8 +17,8 @@ const AdminEvents = () => {
     const getEvents = async () => {
       try {
         const { data } = await axios.get(
-          //'https://api.pictusweb.com/api/cba/blogs/category/events'
-          'http://localhost:2000/api/cba/blogs/category/events'
+          'https://api.pictusweb.com/api/cba/blogs/category/events'
+          //'http://localhost:2000/api/cba/blogs/category/events'
         )
 
         if (data) {

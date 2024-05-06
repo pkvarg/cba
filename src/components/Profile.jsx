@@ -17,7 +17,8 @@ const Profile = ({ userId, setUserId }) => {
   useEffect(() => {
     const getUserById = async () => {
       const res = await axios.get(
-        `http://localhost:2000/api/cba/getUserById/${userId}`
+        `https://api.pictusweb.com/api/cba/getUserById/${userId}`
+        //`http://localhost:2000/api/cba/getUserById/${userId}`
       )
       if (res.data) {
         setName(res.data.name)
@@ -36,17 +37,23 @@ const Profile = ({ userId, setUserId }) => {
     //toast.success('OK')
     try {
       const res = await axios.put(
-        `http://localhost:2000/api/cba/edituser/${userId}`,
+        `https://api.pictusweb.com/api/cba/edituser/${userId}`,
+        // `http://localhost:2000/api/cba/edituser/${userId}`,
         {
           name,
           email,
-
           newPassword,
           isAdmin,
         }
       )
       if (res.statusText === 'OK') {
         setUserId('')
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          name: name,
+          email: email,
+          isAdmin: isAdmin,
+        }))
       }
     } catch (error) {
       console.log(error)
@@ -58,7 +65,8 @@ const Profile = ({ userId, setUserId }) => {
     if (window.confirm('Naozaj?')) {
       try {
         const res = await axios.delete(
-          `http://localhost:2000/api/cba/deleteuser/${userId}`
+          `https://api.pictusweb.com/api/cba/deleteuser/${userId}`
+          //`http://localhost:2000/api/cba/deleteuser/${userId}`
         )
         if (res.statusText === 'OK') {
           toast.success(res.data)

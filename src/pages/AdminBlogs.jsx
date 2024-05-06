@@ -17,8 +17,8 @@ const AdminBlogs = () => {
     const getBlogs = async () => {
       try {
         const { data } = await axios.get(
-          //'https://api.pictusweb.com/api/cba/blogs/category/blogs'
-          'http://localhost:2000/api/cba/blogs/category/blogs'
+          'https://api.pictusweb.com/api/cba/blogs/category/blogs'
+          //'http://localhost:2000/api/cba/blogs/category/blogs'
         )
 
         if (data) {

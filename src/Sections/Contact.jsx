@@ -70,7 +70,7 @@ const Contact = ({ content }) => {
         config
       )
       if (data.status === 'Success') {
-        setMessageSuccess('Správa úspešne odoslaná')
+        setMessageSuccess(content.contactMessageSuccess)
       }
     } catch (error) {
       setMessage(content.contactError)

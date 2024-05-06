@@ -41,8 +41,8 @@ const Blog = () => {
     const fetchCategory = async () => {
       try {
         const { data } = await axios.get(
-          //`https://api.pictusweb.com/api/cba/blogs/category/${categoryToFetch}`
-          `http://localhost:2000/api/cba/blogs/category/${categoryToFetch}`
+          `https://api.pictusweb.com/api/cba/blogs/category/${categoryToFetch}`
+          //`http://localhost:2000/api/cba/blogs/category/${categoryToFetch}`
         )
         if (data) {
           console.log(data)

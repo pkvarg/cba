@@ -29,12 +29,17 @@ const EditBlog = () => {
   const currentPathname = window.location.pathname
   const isEvent = currentPathname.includes('events')
 
+  const [english, setEnglish] = useState(false)
+  // const isBlog = currentPathname.includes('blogs')
+  const [hasLink, setHasLink] = useState(false)
+  const [link, setLink] = useState('')
+
   useEffect(() => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
-          // `https://api.pictusweb.com/api/cba/blogs/${id}`
-          `http://localhost:2000/api/cba/blogs/${id}`
+          `https://api.pictusweb.com/api/cba/blogs/${id}`
+          //`http://localhost:2000/api/cba/blogs/${id}`
         )
 
         if (data) {
@@ -44,6 +49,8 @@ const EditBlog = () => {
           setMedia(data.media)
           setText(data.text)
           setUpcoming(data.upcoming)
+          setEnglish(data.english)
+          setLink(data.link)
         }
       } catch (error) {
         console.log(error)
@@ -113,6 +120,8 @@ const EditBlog = () => {
           media,
           text,
           upcoming,
+          english,
+          link,
         }
       )
 
@@ -175,17 +184,50 @@ const EditBlog = () => {
               <option value='blogs'>Blogy</option>
             </select>
 
-            {isEvent && (
-              <p
-                onClick={() => setUpcoming((prev) => !prev)}
-                className={
-                  upcoming
-                    ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
-                    : 'text-red-500 text-[25px] mt-4 cursor-pointer'
-                }
-              >
-                Nadchádzajúce podujatie? {upcoming ? 'Áno' : 'Nie'}
-              </p>
+            {true && (
+              <>
+                <p
+                  onClick={() => setUpcoming((prev) => !prev)}
+                  className={
+                    upcoming
+                      ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
+                      : 'text-red-500 text-[25px] mt-4 cursor-pointer'
+                  }
+                >
+                  Nadchádzajúce podujatie? {upcoming ? 'Áno' : 'Nie'}
+                </p>
+
+                <p
+                  onClick={() => setEnglish((prev) => !prev)}
+                  className={
+                    english
+                      ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
+                      : 'text-red-500 text-[25px] mt-4 cursor-pointer'
+                  }
+                >
+                  Je toto anglický oznam? {english ? 'Áno' : 'Nie'}
+                </p>
+
+                <p
+                  onClick={() => setHasLink((prev) => !prev)}
+                  className={
+                    hasLink
+                      ? 'text-green-500 text-[25px] mt-4 cursor-pointer'
+                      : 'text-red-500 text-[25px] mt-4 cursor-pointer'
+                  }
+                >
+                  Pridať link odkazujúci na iný web? {hasLink ? 'Áno' : 'Nie'}
+                </p>
+              </>
+            )}
+
+            {hasLink && (
+              <textarea
+                className='text-[#2e2236] mt-4 pl-1'
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+                placeholder='Vlož link...'
+              />
             )}
 
             <div className='flex relative bg-[#2e2236] mt-8'>
