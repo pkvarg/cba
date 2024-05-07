@@ -97,6 +97,11 @@ const HeaderPages = ({ content, setShowContact }) => {
                   >
                     Video
                   </a>
+                  <li>
+                    <a href={'/download'} className='hover:text-yellow-500'>
+                      {content.headerDownload}
+                    </a>
+                  </li>
                 </div>
               </div>
 
@@ -108,10 +113,7 @@ const HeaderPages = ({ content, setShowContact }) => {
               </li>
 
               <li>
-                <DomLink to='/download' className='hover:text-red-600'>
-                  {/* {content.headerDownload} */}
-                  <MdCloudDownload />
-                </DomLink>
+                <LanguageBar />
               </li>
               <li>
                 <DomLink
@@ -120,9 +122,6 @@ const HeaderPages = ({ content, setShowContact }) => {
                 >
                   <FiLogIn />
                 </DomLink>
-              </li>
-              <li>
-                <LanguageBar />
               </li>
             </ul>
           </div>

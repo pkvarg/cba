@@ -64,8 +64,8 @@ const CreateBlog = ({ category, setKey }) => {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        //'https://api.pictusweb.com/api/cba/blog',
-        'http://localhost:2000/api/cba/blog',
+        'https://api.pictusweb.com/api/cba/blog',
+        //'http://localhost:2000/api/cba/blog',
         {
           title,
           category,

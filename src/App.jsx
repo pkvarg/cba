@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import EditBlog from './pages/EditBlog'
 import Footer from './components/Footer'
 import CbaZone from './pages/CbaZone'
+import PublicCbaCalendar from './pages/PublicCbaCalendar'
 import Admin from './pages/Admin'
 import Users from './pages/AdminUsers'
 import Events from './pages/Events'
@@ -52,6 +53,7 @@ function App() {
           <Route path='/admin/edit/:id' element={<EditBlog />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/blog/:id' element={<Blog />} />
+          <Route path='/calendar' element={<PublicCbaCalendar />} />
         </Routes>
         {/* <Footer /> */}
       </StateContext>

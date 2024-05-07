@@ -151,6 +151,11 @@ const Header = ({ content }) => {
                   >
                     Video
                   </a>
+                  <li>
+                    <a href={'/download'} className='hover:text-yellow-500'>
+                      {content.headerDownload}
+                    </a>
+                  </li>
                 </div>
               </div>
 
@@ -166,11 +171,9 @@ const Header = ({ content }) => {
                   {content.headerContact}
                 </Link>
               </li>
+
               <li>
-                <DomLink to='/download' className='hover:text-red-600'>
-                  {/* {content.headerDownload} */}
-                  <MdCloudDownload />
-                </DomLink>
+                <LanguageBar />
               </li>
               <li>
                 <DomLink
@@ -179,10 +182,6 @@ const Header = ({ content }) => {
                 >
                   <FiLogIn />
                 </DomLink>
-              </li>
-
-              <li>
-                <LanguageBar />
               </li>
             </ul>
           </div>

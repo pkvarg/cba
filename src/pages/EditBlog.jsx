@@ -111,9 +111,9 @@ const EditBlog = () => {
   const handleSubmit = async () => {
     try {
       const res = await axios.put(
-        // `https://api.pictusweb.com/api/cba/blogs/update/${id}`,
+         `https://api.pictusweb.com/api/cba/blogs/update/${id}`,
 
-        `http://localhost:2000/api/cba/blogs/update/${id}`,
+        //`http://localhost:2000/api/cba/blogs/update/${id}`,
         {
           title,
           category,
