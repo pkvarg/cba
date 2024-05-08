@@ -16,7 +16,6 @@ const Footer = () => {
         // `http://localhost:2000/api/visitors/cba/increase`,
         config
       )
-      console.log(data)
     } catch (error) {
       console.log(error)
     }

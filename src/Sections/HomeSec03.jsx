@@ -70,7 +70,7 @@ const HomeSec03 = ({ content, language }) => {
                 <h3 className='text-[30px] text-center mt-2 mx-4 lg:mx-0'>
                   {blog.title}
                 </h3>
-                <p className='mt-2 lg:whitespace-pre text-center'>
+                <p className='mt-2 whitespace-break-spaces lg:whitespace-pre text-center'>
                   {blog.text}
                 </p>
                 {blog.link && (
