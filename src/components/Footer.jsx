@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer className='bg-[#2e2236] font-light'>
-      <section className='mx-4 text-white text-[30px] lg:text-[20px] pt-4 pb-8'>
+      <section className='mx-4 text-white text-[15px] lg:text-[20px] pt-0 lg:pt-4 pb-8'>
         <div className='flex flex-row gap-2 justify-center items-center'>
           <p className='text-[20px] mt-[10px]'>&copy;</p>
           <p> {Date().substring(11, 15)}</p>
