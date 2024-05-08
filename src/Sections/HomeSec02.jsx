@@ -7,10 +7,10 @@ const HomeSec02 = ({ content }) => {
     <>
       <div className='bg-[#2e2236] h-8' id='faith'></div>
       <div className='bg-[#2e2236] text-white'>
-        <h1 className='text-center text-[40px] font-medium pt-16 uppercase'>
+        <h1 className='text-center text-[30px] lg:text-[40px] font-medium pt-8 lg:pt-16 uppercase'>
           {content.home02title}
         </h1>
-        <div className='text-[30px] font-light mx-2 lg:mx-[20%] text-justify py-16 flex flex-col gap-4 lg:gap-2'>
+        <div className='text-[20px] lg:text-[30px] font-light mx-4 lg:mx-[20%] text-justify py-8 lg:py-16 flex flex-col gap-4 lg:gap-2'>
           <p>{content.home02p1}</p>
 
           <p>{content.home02p2}</p>

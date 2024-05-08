@@ -73,15 +73,15 @@ const Blog = () => {
       </div>
 
       <div>
-        <div className='bg-[#768c51] text-white py-16 text-[30px]'>
+        <div className='bg-[#768c51] text-white py-8 lg:py-16 text-[20px] lg:text-[30px]'>
           {/* <h1 className='text-center'>Blogy v kategórii {categoryToFetch}</h1> */}
-          <div className='flex flex-row items-center justify-evenly mx-2 lg:mx-[20%]'>
+          <div className='flex flex-row items-center justify-evenly mx-4 lg:mx-[20%]'>
             {language === 'slovak' &&
               blogs &&
               blogs.map((blog) => (
                 <div className='flex flex-col' id={blog._id} key={blog._id}>
                   <div className='flex flex-col gap-2 justify-center items-center py-2 mt-8'>
-                    <h2>{blog.title}</h2>
+                    <h2 className='text-[30px]'>{blog.title}</h2>
                     {blog.media && (
                       <img
                         src={blog.media}
@@ -89,7 +89,9 @@ const Blog = () => {
                         className='w-[100px]'
                       />
                     )}
-                    <p className='font-[300] text-justify'>{blog.text}</p>
+                    <p className='font-[300] text-[20px] lg:text-[30px] text-justify'>
+                      {blog.text}
+                    </p>
                   </div>
                   <a
                     href='https://www.rhemabooks.org/sk/home/'

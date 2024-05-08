@@ -26,26 +26,26 @@ const Home = () => {
   return (
     <>
       <Header content={content} />
-      <div className='hero h-[90vh] lg:h-[110vh] text-[25px] text-white -mt-[25%] lg:-mt-[8%]'>
+      <div className='hero h-[90vh] lg:h-[110vh] text-[50px] lg:text-[75px] text-white -mt-[25%] lg:-mt-[8%] '>
         {language === 'slovak' ? (
-          <h1 className='text-center text-[75px] leading-[75px] pt-[50%] lg:pt-[20%]'>
+          <h1 className='text-center pt-[50%] lg:pt-[20%] leading-[50px] lg:leading-[75px]'>
             Cirkev <br className='flex lg:hidden' /> v Bratislave
           </h1>
         ) : (
-          <h1 className='text-center text-[75px] pt-[50%] lg:pt-[20%]'>
+          <h1 className='text-center pt-[50%] lg:pt-[20%] leading-[50px] lg:leading-[75px]'>
             The Church <br className='flex lg:hidden' /> in Bratislava
           </h1>
         )}
 
         {language === 'slovak' ? (
-          <p className='text-center text-[30px] mx-2'>
+          <p className='text-center text-[25px] lg:text-[30px] mx-2 mt-4 lg:mt-0'>
             "Ja som vínny kmeň a vy ste ratolesti. <br /> Kto zostáva vo mne a
             ja v ňom, ten prináša veľa ovocia, <br /> pretože bezo mňa nič
             nemôžete činiť." <br />
             <span className='text-[18px] text-center'> Ján 15:5</span>
           </p>
         ) : (
-          <p className='text-center text-[30px] mx-2'>
+          <p className='text-center text-[25px] lg:text-[30px] mx-2 mt-4 lg:mt-0'>
             "I am the vine; you are the branches. <br /> He who abides in Me and
             I in him, he bears amuch fruit; <br /> for apart from Me you can do
             nothing." <br />

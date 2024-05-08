@@ -73,9 +73,7 @@ const HeaderPages = ({ content, setShowContact }) => {
 
               <div className='group relative  cursor-pointer'>
                 <div className='flex items-center justify-between'>
-                  <DomLink to='/gallery' className='hover:text-red-600'>
-                    {content.headerGallery}
-                  </DomLink>
+                  <p className='hover:text-red-600'>{content.headerGallery}</p>
                   {/* <a className='menu-hover hover:text-yellow-500'>Galéria</a> */}
                 </div>
                 <div className='invisible absolute z-50 flex w-max flex-col px-4 py-1 text-white shadow-xl group-hover:visible'>

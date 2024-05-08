@@ -81,8 +81,8 @@ const Contact = ({ content }) => {
   return (
     <>
       <div className='bg-[#2e2236] h-8' id='contact'></div>
-      <div className='bg-[#2e2236] pt-16 pb-10 text-[25px] text-white'>
-        <h1 className='text-[35px] lg:text-[35px] text-white text-center lg:pt-0 py-4'>
+      <div className='bg-[#2e2236] pt-8 lg:pt-16 pb-10 text-[25px] text-white'>
+        <h1 className='text-[30px] lg:text-[35px] text-white text-center lg:pt-0 py-4'>
           {content.contactTitle}
         </h1>
         <div className='mx-4 md:mx-6 lg:mx-0 flex lg:flex-row flex-col lg:justify-center'>
