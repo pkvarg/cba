@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-scroll'
+
 import { Link as DomLink } from 'react-router-dom'
 import LanguageBar from './LanguageBar'
 import { FiLogIn } from 'react-icons/fi'
-import { MdCloudDownload } from 'react-icons/md'
 
 const HeaderPages = ({ content, setShowContact }) => {
   const [navbar, setNavbar] = useState(false)
 
-  const navigate = useNavigate()
+  const currentPathname = window.location.pathname
+  console.log(currentPathname)
 
   return (
     <nav id='navbar' className={'top-0  w-full text-white nav-font'}>
@@ -74,34 +73,44 @@ const HeaderPages = ({ content, setShowContact }) => {
               <div className='group relative  cursor-pointer'>
                 <div className='flex items-center justify-between'>
                   <p className='hover:text-red-600'>{content.headerGallery}</p>
-                  {/* <a className='menu-hover hover:text-yellow-500'>Galéria</a> */}
                 </div>
-                <div className='invisible absolute z-50 flex w-max flex-col px-4 py-1 text-white shadow-xl group-hover:visible'>
+                <div className='invisible absolute z-50 flex w-max flex-col px-4 py-1 text-white shadow-xl group-hover:visible group-hover:bg-[#aeaba4]'>
                   <a
                     href={'/gallery'}
-                    className='cursor-pointer hover:text-yellow-500'
+                    className='cursor-pointer hover:text-red-600'
                   >
                     {content.headerPhotos}
                   </a>
                   <a
                     href={'/audio'}
-                    className='cursor-pointer hover:text-yellow-500'
+                    className='cursor-pointer hover:text-red-600'
                   >
                     Audio
                   </a>
                   <a
                     href={'/video'}
-                    className='cursor-pointer hover:text-yellow-500'
+                    className='cursor-pointer hover:text-red-600'
                   >
                     Video
                   </a>
                   <li>
-                    <a href={'/download'} className='hover:text-yellow-500'>
+                    <a href={'/download'} className='hover:text-red-600'>
                       {content.headerDownload}
                     </a>
                   </li>
                 </div>
               </div>
+
+              {currentPathname !== '/blog' && (
+                <li>
+                  <DomLink
+                    to='/blog'
+                    className='hover:text-red-600 cursor-pointer'
+                  >
+                    Blog
+                  </DomLink>
+                </li>
+              )}
 
               <li
                 onClick={() => setShowContact(true)}

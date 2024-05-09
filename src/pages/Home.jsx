@@ -47,7 +47,7 @@ const Home = () => {
         ) : (
           <p className='text-center text-[25px] lg:text-[30px] mx-2 mt-4 lg:mt-0'>
             "I am the vine; you are the branches. <br /> He who abides in Me and
-            I in him, he bears amuch fruit; <br /> for apart from Me you can do
+            I in him, he bears much fruit; <br /> for apart from Me you can do
             nothing." <br />
             <span className='text-[18px] text-center'> John 15:5</span>
           </p>

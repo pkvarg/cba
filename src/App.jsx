@@ -24,6 +24,8 @@ import { Toaster } from 'react-hot-toast'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 import Blog from './pages/Blog'
 import Counter from './pages/counter'
+import Video from './pages/Video'
+
 export const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 export const provider = new GoogleAuthProvider()
@@ -55,6 +57,7 @@ function App() {
           <Route path='/blog/:id' element={<Blog />} />
           <Route path='/calendar' element={<PublicCbaCalendar />} />
           <Route path='/counter' element={<Counter />} />
+          <Route path='/video' element={<Video />} />
         </Routes>
         {/* <Footer /> */}
       </StateContext>

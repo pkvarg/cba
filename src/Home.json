@@ -61,7 +61,12 @@
     "contactSuccess": "Vaša správa bola úspešne odoslaná!",
 
     "gdpr1": "Vami poskytnuté údaje neuchovávame v žiadnej databáze.",
-    "gdpr2": "Email bude použitý len na odpoveď na Vašu správu."
+    "gdpr2": "Email bude použitý len na odpoveď na Vašu správu.",
+
+    "galleryPhoto": "Foto galéria",
+    "galleryAudio": "Audio galéria",
+    "galleryVideo": "Video galéria",
+    "galleryDownload": "Na stahnutie"
   },
 
   "english": {
@@ -123,6 +128,11 @@
     "contactSuccess": "Message successfully sent!",
 
     "gdpr1": "We do not store the data provided by you in any database.",
-    "gdpr2": "The email will only be used to respond to your message."
+    "gdpr2": "The email will only be used to respond to your message.",
+
+    "galleryPhoto": "Photo Gallery",
+    "galleryAudio": "Audio Gallery",
+    "galleryVideo": "Video Gallery",
+    "galleryDownload": "Download"
   }
 }

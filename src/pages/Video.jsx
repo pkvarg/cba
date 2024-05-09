@@ -3,7 +3,7 @@ import Translation from '../Home.json'
 import { useStateContext } from '../context/StateContext'
 import HeaderPages from '../components/HeaderPages'
 
-const Gallery = () => {
+const Video = () => {
   const { language } = useStateContext()
   const [content, setContent] = useState({})
   const [showContact, setShowContact] = useState(false)
@@ -29,10 +29,10 @@ const Gallery = () => {
     <div>
       <HeaderPages content={content} setShowContact={setShowContact} />
       <h1 className='text-center text-white text-[30px]'>
-        {content.galleryPhoto}
+        {content.galleryVideo}
       </h1>
     </div>
   )
 }
 
-export default Gallery
+export default Video

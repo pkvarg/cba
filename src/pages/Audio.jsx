@@ -1,47 +1,36 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import Translation from '../Home.json'
+import { useStateContext } from '../context/StateContext'
+import HeaderPages from '../components/HeaderPages'
 
-const Audio = ({ content }) => {
-  const [roomCode, setRoomcode] = useState()
-  const navigate = useNavigate()
+const Audio = () => {
+  const { language } = useStateContext()
+  const [content, setContent] = useState({})
+  const [showContact, setShowContact] = useState(false)
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault()
-    navigate(`/room/${roomCode}`)
-  }
+  useEffect(() => {
+    if (showContact) {
+      const element = document.getElementById('contact')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }, [showContact])
+
+  useEffect(() => {
+    if (language === 'slovak') {
+      setContent(Translation.slovak)
+    } else {
+      setContent(Translation.english)
+    }
+  }, [language])
 
   return (
-    <div className='h-[95vh] bg-[#2e2236] text-white text-[35px] relative'>
-      <p
-        onClick={() => navigate('/')}
-        className='absolute top-2 left-2 text-white cursor-pointer'
-      >
-        Home
-      </p>
-      <h1 className='text-center text-green-700 py-16'>
-        Audio for Translation of the Meetings
+    <div>
+      <HeaderPages content={content} setShowContact={setShowContact} />
+      <h1 className='text-center text-white text-[30px]'>
+        {content.galleryAudio}
       </h1>
-      <h2 className='text-center text-yellow-600'>
-        Room Code will be announced...
-      </h2>
-      <form
-        onSubmit={handleFormSubmit}
-        className='flex flex-col justify-center items-center pt-8'
-      >
-        <div className='text-white my-4'>
-          <label className='block text-[25px] '>Enter Room Code</label>
-          <input
-            type='text'
-            required
-            placeholder='Enter Room Code'
-            onChange={(e) => setRoomcode(e.target.value)}
-            className='pl-1'
-          />
-        </div>
-        <button className='text-green-700' type='submit'>
-          Enter Room
-        </button>
-      </form>
     </div>
   )
 }

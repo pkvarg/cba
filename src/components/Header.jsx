@@ -110,7 +110,6 @@ const Header = ({ content }) => {
                 >
                   Blog
                 </DomLink>
-                {/* <a href='/'>Vyznanie viery</a> */}
               </li>
               <li>
                 <Link
@@ -133,24 +132,24 @@ const Header = ({ content }) => {
                 <div className='invisible absolute z-50 flex w-max flex-col px-4 py-1 text-white shadow-xl group-hover:visible group-hover:bg-[#768c51]'>
                   <a
                     href={'/gallery'}
-                    className='cursor-pointer hover:text-yellow-500'
+                    className='cursor-pointer hover:text-red-600'
                   >
                     {content.headerPhotos}
                   </a>
                   <a
                     href={'/audio'}
-                    className='cursor-pointer hover:text-yellow-500'
+                    className='cursor-pointer hover:text-red-600'
                   >
                     Audio
                   </a>
                   <a
                     href={'/video'}
-                    className='cursor-pointer hover:text-yellow-500'
+                    className='cursor-pointer hover:text-red-600'
                   >
                     Video
                   </a>
                   <li>
-                    <a href={'/download'} className='hover:text-yellow-500'>
+                    <a href={'/download'} className='hover:text-red-600'>
                       {content.headerDownload}
                     </a>
                   </li>
