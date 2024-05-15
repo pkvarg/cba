@@ -85,8 +85,8 @@ const Contact = ({ content }) => {
         <h1 className='text-[30px] lg:text-[35px] text-white text-center lg:pt-0 py-4'>
           {content.contactTitle}
         </h1>
-        <div className='mx-4 md:mx-6 lg:mx-0 flex lg:flex-row flex-col lg:justify-center'>
-          <div className='pt-[50px] lg:pt-0'>
+        <div className='mx-4 md:mx-6 lg:mx-0 flex lg:flex-row flex-col lg:justify-center lg:gap-[10%] '>
+          <div className='pt-[50px] lg:pt-0 lg:w-[30%]'>
             {messageSuccess && (
               <Message variant='success'>{messageSuccess}</Message>
             )}
@@ -199,6 +199,22 @@ const Contact = ({ content }) => {
                 </button>
               </form>
             </div>
+            <div></div>
+          </div>
+          <div className='lg:w-[30%] '>
+            <h1 className='mt-14 text-center'>
+              Pre osobný kontakt alebo štúdium biblie
+            </h1>
+            <h2 className='text-center'>
+              nás kontaktujte prosím cez formulár.
+            </h2>
+            <div className='mt-16 flex lg:ml-16 justify-center lg:mr-[15%]'>
+              <img className='w-[50%]' src='tree.png' alt='tree of life' />
+            </div>
+            <h3 className='mt-12 text-[#A0B937] text-center'>
+              V Ňom bol život a život bol svetlom ľudí.
+              <span className='text-[17.5px] '> Ján 1:4</span>
+            </h3>
           </div>
         </div>
       </div>
