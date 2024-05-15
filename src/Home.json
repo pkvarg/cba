@@ -60,6 +60,11 @@
     "contactError2": "Chyba! Napíšte nám na cestazivota@cestazivota.sk, prosím.",
     "contactSuccess": "Vaša správa bola úspešne odoslaná!",
 
+    "contactInvite01": "Pre osobný kontakt alebo štúdium biblie",
+    "contactInvite02": "nás kontaktujte prosím cez formulár.",
+    "contactInvite03": "V Ňom bol život a život bol svetlom ľudí.",
+    "contactInvite04": "Ján 1:4",
+
     "gdpr1": "Vami poskytnuté údaje neuchovávame v žiadnej databáze.",
     "gdpr2": "Email bude použitý len na odpoveď na Vašu správu.",
 
@@ -127,6 +132,10 @@
     "contactError2": "Error! Write to cestazivota@cestazivota.sk, please.",
     "contactSuccess": "Message successfully sent!",
 
+    "contactInvite01": "For personal contact or Bible study",
+    "contactInvite02": "contact us via contact form please.",
+    "contactInvite03": "In him was life, and that life was the light of all mankind.",
+    "contactInvite04": "John 1:4",
     "gdpr1": "We do not store the data provided by you in any database.",
     "gdpr2": "The email will only be used to respond to your message.",
 

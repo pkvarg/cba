@@ -202,18 +202,14 @@ const Contact = ({ content }) => {
             <div></div>
           </div>
           <div className='lg:w-[30%] '>
-            <h1 className='mt-14 text-center'>
-              Pre osobný kontakt alebo štúdium biblie
-            </h1>
-            <h2 className='text-center'>
-              nás kontaktujte prosím cez formulár.
-            </h2>
+            <h1 className='mt-14 text-center'>{content.contactInvite01}</h1>
+            <h2 className='text-center'>{content.contactInvite02}</h2>
             <div className='mt-16 flex lg:ml-16 justify-center lg:mr-[15%]'>
               <img className='w-[50%]' src='tree.png' alt='tree of life' />
             </div>
             <h3 className='mt-12 text-[#A0B937] text-center'>
-              V Ňom bol život a život bol svetlom ľudí.
-              <span className='text-[17.5px] '> Ján 1:4</span>
+              {content.contactInvite03}
+              <span className='text-[17.5px] '> {content.contactInvite04}</span>
             </h3>
           </div>
         </div>
